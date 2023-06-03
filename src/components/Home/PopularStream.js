@@ -19,6 +19,7 @@ const viewAllHandler = (action)=>{if(action ==='hide'){setLoadMore({btnDisplay:t
     
   return (
 <>
+
 <Box sx={{pt:"30px",mb:"45px",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",pl:"10px"}}>
 <BarLine/>
 <Box sx={{mt:"20px",mb:"50px"}}>
@@ -32,7 +33,7 @@ const viewAllHandler = (action)=>{if(action ==='hide'){setLoadMore({btnDisplay:t
         <Box  onClick={()=>navigate(`/filterStreams/${item.parentStream}`)} id="imageBoxPopularStream" >
             <img style={{borderRadius:"5px"}}  src={`${BASE_URL}`+item.image}  alt="clg" />
         <Box id="iimageBoxPopularStreamText">
-          <Typography width="fit-content" mb="5px" fontWeight={600} lineHeight={1} fontSize=".6875rem" p="3px 5px 2px" sx={{bgcolor:" #004dda"}}>223 Listings</Typography>
+          <Typography width="fit-content" mb="5px" fontWeight={600} lineHeight={1} fontSize=".6875rem" p="3px 5px 2px" sx={{bgcolor:" #004dda",borderRadius:"10px"}}>223 Listings</Typography>
           <Typography  sx={{color:"#fff"}} fontSize="1.600rem">{item.parentStream}</Typography>
         </Box>
         </Box>
@@ -40,7 +41,7 @@ const viewAllHandler = (action)=>{if(action ==='hide'){setLoadMore({btnDisplay:t
         })}
 
     {/* hiding postss */}
-    {data.slice(9).map((item,_)=>{
+    {loadMore.postDisplay ?  data.slice(6).map((item,_)=>{
           return ( <Grid id="effect7"  key={item._id} item sx={{mb:"10px",display:loadMore.postDisplay?"block":"none"}}>
         <Box  onClick={()=>navigate(`/filterStreams/${item.parentStream}`)} id="imageBoxPopularStream" >
             <img style={{borderRadius:"5px"}}  src={`${BASE_URL}`+item.image}  alt="clg" />
@@ -50,8 +51,9 @@ const viewAllHandler = (action)=>{if(action ==='hide'){setLoadMore({btnDisplay:t
         </Box>
         </Box>
     </Grid>)
-        })}
-      
+        })
+      :"" }
+
 </Grid>
 <Box sx={{mt:"20px",display:"flex",alignItems:"flex-end",justifyContent:"right",width:"81%"}}>
 <Button onClick={viewAllHandler}  size='small' sx={{display:loadMore.btnDisplay?"block":"none",borderRadius:"100px",color:"white",p:"11px 40px",bgcolor:"#ff9800",textTransform:"unset","&:hover":{bgcolor:"#ff9800",color:"black"}}}>View all</Button>

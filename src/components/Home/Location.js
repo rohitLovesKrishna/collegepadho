@@ -37,7 +37,7 @@ const viewAllHandler = (action)=>{if(action ==='hide'){setLoadMore({btnDisplay:t
         })}
 
     {/* hiding postss */}
-        {data.slice(9).map((item,_)=>{
+      {loadMore.postDisplay ?data.slice(9).map((item,_)=>{
           return (  <Grid id="effect7" key={item._id} item sx={{mb:"10px",display:loadMore.postDisplay?"block":"none"}}>
         <Box onClick={()=>navigate(`/filterlocation/${item.locationName}`)}id="imageBoxPopularStream"  >
             <img style={{borderRadius:"5px"}} src={`${BASE_URL}`+item.image} alt="clg" />
@@ -46,7 +46,8 @@ const viewAllHandler = (action)=>{if(action ==='hide'){setLoadMore({btnDisplay:t
         </Box>
         </Box>
     </Grid>)
-        })}
+        }):""}
+      
 </Grid>
 <Box sx={{mt:"20px",display:"flex",alignItems:"flex-end",justifyContent:"right",width:"81%"}}>
 <Button onClick={viewAllHandler}  size='small' sx={{display:loadMore.btnDisplay?"block":"none",borderRadius:"100px",color:"white",p:"11px 40px",bgcolor:"#ff9800",textTransform:"unset","&:hover":{bgcolor:"#ff9800",color:"black"}}}>View all</Button>

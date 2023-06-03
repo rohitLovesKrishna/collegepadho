@@ -1,4 +1,4 @@
-import {CardContent,CardMedia, Button,Box, Card, Typography, Grid } from '@mui/material'
+import {CardContent,CardMedia, Button,Box, Card, Typography, Grid, Container } from '@mui/material'
 import {useState,useEffect} from 'react'
 import BarLine from '../Global/BarLine'
 import Slider from 'react-slick'
@@ -8,42 +8,7 @@ import { useNavigate } from 'react-router-dom'
 import BASE_URL from '../constant'
 import axios from 'axios'
 
-// const data = [{
-//     id:0,
-//     imgLink:"https://www.collegepadho.com/uploads/listing_thumbnails/ba1a58d82b2fcf5ed9fe2ff0b01751d7.jpg",
-//     title:"Dr. D. Y. Patil Dental College & Hospital",
-//     para:"Since its inception in 2000 , Dr. D. Y. Patil Dental College & Hospital has maintained its qulit...",
-//     course:"BACHELOR OF DENTAL SURGERY (BDS)"
-// },
-// {
-//       id:1,
-//     imgLink:"https://www.collegepadho.com/uploads/listing_thumbnails/ba1a58d82b2fcf5ed9fe2ff0b01751d7.jpg",
-//     title:"Dr. D. Y. Patil Dental College & Hospital",
-//     para:"Since its inception in 2000 , Dr. D. Y. Patil Dental College & Hospital has maintained its qulit...",
-//     course:"BACHELOR OF DENTAL SURGERY (BDS)"
-// },
-// {
-//       id:2,
-//     imgLink:"https://www.collegepadho.com/uploads/listing_thumbnails/ba1a58d82b2fcf5ed9fe2ff0b01751d7.jpg",
-//     title:"Dr. D. Y. Patil Dental College & Hospital",
-//     para:"Since its inception in 2000 , Dr. D. Y. Patil Dental College & Hospital has maintained its qulit...",
-//     course:"BACHELOR OF DENTAL SURGERY (BDS)"
-// },
-// {
-//       id:3,
-//     imgLink:"https://www.collegepadho.com/uploads/listing_thumbnails/ba1a58d82b2fcf5ed9fe2ff0b01751d7.jpg",
-//     title:"Dr. D. Y. Patil Dental College & Hospital",
-//     para:"Since its inception in 2000 , Dr. D. Y. Patil Dental College & Hospital has maintained its qulit...",
-//     course:"BACHELOR OF DENTAL SURGERY (BDS)"
-// },
-// {
-//       id:4,
-//     imgLink:"https://www.collegepadho.com/uploads/listing_thumbnails/ba1a58d82b2fcf5ed9fe2ff0b01751d7.jpg",
-//     title:"Dr. D. Y. Patil Dental College & Hospital",
-//     para:"Since its inception in 2000 , Dr. D. Y. Patil Dental College & Hospital has maintained its qulit...",
-//     course:"BACHELOR OF DENTAL SURGERY (BDS)"
-// },
-// ]
+
 
 const FeaturedColleges = () => {
 const navigate =useNavigate();
@@ -69,7 +34,8 @@ useEffect(()=>fetchCollege(),[])
     if(cardApi.length > 0){
 return (
     <>
-      {cardApi.length > 3?    <Box sx={{bgcolor:" #EAEAEA;",pt:"50px",pb:"50px"}}>
+    <Container disableGutters maxWidth="xl">
+      {cardApi.length > 3?    <Box sx={{bgcolor:" #EAEAEA;",pt:"50px",pb:"10px"}}>
         <Box sx={{display:"flex",alignItems:"center",justifyContent:"center"}}>
 <BarLine/>
         </Box>
@@ -132,7 +98,7 @@ return (
 <Button   size='small' sx={{borderRadius:"100px",color:"white",p:"11px 40px",bgcolor:"#ff9800",textTransform:"unset","&:hover":{bgcolor:"#ff9800",color:"black"}}}>View all</Button>
 </Box>
     </Box> : ""}
-
+    </Container>
     </>
   )
     }

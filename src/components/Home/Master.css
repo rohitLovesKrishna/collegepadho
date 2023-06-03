@@ -7,6 +7,10 @@
 }
 #effect7
 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 30px;
     position:relative;
     -webkit-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
        -moz-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
@@ -16,10 +20,13 @@
 {
   content:"";
     position:absolute;
+        display: flex;
+    align-items: center;
+    justify-content: center;
     z-index:-1;
     -webkit-box-shadow:0 0 20px rgba(0,0,0,0.8);
     -moz-box-shadow:0 0 20px rgba(0,0,0,0.8);
-    box-shadow:0 0 20px rgba(0,0,0,0.8);
+    box-shadow:0 0 20px rgba(153, 152, 152, 0.8);
     top:0;
     bottom:0;
     left:10px;
@@ -55,7 +62,7 @@ opacity: 0.8;
 }
 .slick-dots li button:before{
     font-size: 20px;
-    padding-top: 50px;
+    padding-top: 30px;
 }
 .slick-dots li{
     margin-right: 5px;
