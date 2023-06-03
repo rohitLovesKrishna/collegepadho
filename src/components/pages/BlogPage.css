@@ -1,0 +1,13 @@
+@media only screen and (max-width: 899px) {
+  #rightGrid{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  #rightFirstImg{
+    width:100px;
+  }
+  #secondFirstImg{
+    width:100px;
+  }
+}

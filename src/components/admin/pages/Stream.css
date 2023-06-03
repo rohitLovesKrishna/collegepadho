@@ -1,0 +1,21 @@
+
+
+@media only screen and (max-width: 899px) {
+#particularcard{
+margin-left:31px ;
+}
+}
+
+@media only screen and (max-width: 563px) {
+#particularcard{
+margin-left:20px ;
+}
+}
+
+
+@media only screen and (max-width: 375px) {
+#particularcard{
+margin-left:14px ;
+}
+}
+

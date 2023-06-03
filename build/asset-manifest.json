@@ -1,0 +1,41 @@
+{
+  "files": {
+    "main.css": "/static/css/main.18421bf9.css",
+    "main.js": "/static/js/main.dc770310.js",
+    "static/js/787.805726ff.chunk.js": "/static/js/787.805726ff.chunk.js",
+    "static/media/noimage.gif": "/static/media/noimage.7552d12da73e253861ee.gif",
+    "static/media/education_loadig2.gif": "/static/media/education_loadig2.f1b97e632a3ecd368c04.gif",
+    "static/media/home_banner.jpg": "/static/media/home_banner.0fb6e5bba98e29c91b64.jpg",
+    "static/media/BannerImage.jpg": "/static/media/BannerImage.814950c0994393b1c8e2.jpg",
+    "static/media/clg3.jpg": "/static/media/clg3.7fc0dca464cbbae6f296.jpg",
+    "static/media/clg5.jpg": "/static/media/clg5.c419377106af95693c14.jpg",
+    "static/media/clg2.jpg": "/static/media/clg2.b7421f03b88ddc9784c1.jpg",
+    "static/media/clg4.jpg": "/static/media/clg4.d47b7f2d0064a62dc6ed.jpg",
+    "static/media/cartooncllg.jpg": "/static/media/cartooncllg.4bbca55d50dda3770854.jpg",
+    "static/media/edu.jpg": "/static/media/edu.2c14ef0fdb3a76b91502.jpg",
+    "static/media/whatsapp_icon-icons.com_62756.png": "/static/media/whatsapp_icon-icons.com_62756.6869cb78f1bb2b072c6f.png",
+    "static/media/mba.jpg": "/static/media/mba.ca0cc37d4d52450ac728.jpg",
+    "static/media/tagmba.jpg": "/static/media/tagmba.ca0cc37d4d52450ac728.jpg",
+    "static/media/Bca.jpg": "/static/media/Bca.f66d4c5e5729220aa648.jpg",
+    "static/media/college.jpg": "/static/media/college.f66d4c5e5729220aa648.jpg",
+    "static/media/collegePadho.jpg": "/static/media/collegePadho.f66d4c5e5729220aa648.jpg",
+    "static/media/tag.jpg": "/static/media/tag.f66d4c5e5729220aa648.jpg",
+    "static/media/dark_logo.png": "/static/media/dark_logo.0e080e817764ed6f1094.png",
+    "static/media/privacy-policy.svg": "/static/media/privacy-policy.093ea8e8d4e04d182193c9e55e6f8ac4.svg",
+    "static/media/earth.svg": "/static/media/earth.81c5c2425fc8fa0844bd13cef1a5e6c8.svg",
+    "static/media/tsc.svg": "/static/media/tsc.73af058b8124ad892f0e9a60184383f6.svg",
+    "static/media/slick.svg": "/static/media/slick.2630a3e3eab21c607e21.svg",
+    "static/media/slick.eot": "/static/media/slick.a4e97f5a2a64f0ab1323.eot",
+    "static/media/slick.ttf": "/static/media/slick.c94f7671dcc99dce43e2.ttf",
+    "static/media/slick.woff": "/static/media/slick.295183786cd8a1389865.woff",
+    "static/media/faq.svg": "/static/media/faq.fbe64be977191cc106f9c64a96ede651.svg",
+    "index.html": "/index.html",
+    "main.18421bf9.css.map": "/static/css/main.18421bf9.css.map",
+    "main.dc770310.js.map": "/static/js/main.dc770310.js.map",
+    "787.805726ff.chunk.js.map": "/static/js/787.805726ff.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.18421bf9.css",
+    "static/js/main.dc770310.js"
+  ]
+}

@@ -1,0 +1,10 @@
+body , html {
+  margin: 0;
+  font-family: 'Geologica', sans-serif;
+font-family: 'Josefin Sans', sans-serif;
+font-family: 'Montserrat', sans-serif;
+font-family: 'Space Grotesk', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* background-color: red; */
+}

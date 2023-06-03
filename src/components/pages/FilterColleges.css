@@ -1,0 +1,36 @@
+#clgimg{
+     transition: all 0.70s ease-in-out;
+     overflow: hidden;
+}
+
+ #clgimg:hover img{
+     transition: all 0.40s ease-in-out;
+    transform: scale(1.1);
+    
+    
+ }
+
+ @media only screen and (max-width: 1075px) {
+#leftBox{
+width:90%;
+}
+#rightBox{
+    margin-bottom: 30px;
+}
+#filterBox{
+    width:'80%%'
+}
+}
+
+ @media only screen and (max-width: 597px) {
+
+#rightBox{
+    margin:20px;
+}
+#leftBox{
+    margin:20px;
+}
+#upperBox{
+    font-size: 15px;
+}
+}

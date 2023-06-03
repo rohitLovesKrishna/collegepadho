@@ -1,0 +1,32 @@
+#followus{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+@media only screen and (max-width: 800px) {
+#btnAdmission{
+    margin-bottom: 10px;
+}
+#terms{
+    font-size: 8px;
+}
+}
+
+@media only screen and (max-width: 500px) {
+    #fontControlContact{
+        font-size: 10px;
+        display: flex;
+    }
+    #quickLink#cont{
+    margin-left: 0px;
+}
+#terms{
+    font-size: 3px;
+}
+#footerItem{
+    flex-direction: column;
+}
+#terms{
+    font-size: 12px;
+}
+}

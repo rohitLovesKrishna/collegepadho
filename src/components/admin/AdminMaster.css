@@ -1,0 +1,27 @@
+.paper::-webkit-scrollbar{
+    display: none;
+}
+#addnewuser_btn2,#addnewuser_btnText2{
+    display: none;
+}
+
+@media only screen and (max-width: 1136px) {
+#collegePagePaper{
+overflow: hidden;
+}
+}
+@media only screen and (max-width: 196px) {
+#addnewuser_btn{
+display: none;
+}
+#addnewuser_btn2,#addnewuser_btnText2{
+    display: flex;
+    font-size: 10px;
+}
+#addnewuser_btnText{
+    display: none;
+}
+}
+#searchInputadmin{
+    width: 8rem;
+}
