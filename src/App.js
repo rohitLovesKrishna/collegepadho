@@ -72,7 +72,7 @@ function App() {
   <Route exact path='/admin/register' element = {<RegisterPage/>}/>
 
 
-    <Route element={<PrivateRoutes/>}>
+    {/* <Route element={<PrivateRoutes/>}> */}
       <Route exact path='/admin' element = {<HomepageAdmin/>}/>
       <Route exact path='/admin/allcolleges' element = {<Colleges/>}/>
       <Route exact path='/admin/fo5n4ejplzppvs0y8d52u3bkuwvd0m6y57365a0tyub6p044fn7e6csupcqmwxq5ikuncw0bjrwbvltj0f9v2kdcijvvo2wlwqlh' element = {<AddNewCollege/>}/>
@@ -106,7 +106,7 @@ function App() {
       <Route exact path='/admin/smtpsettings' element = {<SmtpSetting/>}/>
       <Route exact path='/admin/leads' element = {<Leadspage/>}/>
       <Route exact path='/admin/offlinepayment' element = {<OfflinePayment/>}/>
-    </Route>
+    {/* </Route> */}
   
 
 </Routes>

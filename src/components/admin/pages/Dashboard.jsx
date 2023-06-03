@@ -3,6 +3,8 @@ import {
   Box,
   Grid,
   Typography,
+  Button,
+  FormControl,
   Paper,
 } from "@mui/material";
 import { Doughnut } from "react-chartjs-2";
@@ -12,8 +14,12 @@ import { chart } from "chart.js/auto";
 import DonutSmallIcon from "@mui/icons-material/DonutSmall";
 import { useState } from "react";
 import './Dashboard.css';
+import axios from "axios";
+import { useEffect } from "react";
+import BASE_URL from "../../constant";
 
 const Dashboard = () => {
+  const [daunutData, setdaunutData]=useState([])
   const [data, setData] = useState({
     lables: ["red", "green"],
     datasets: [
@@ -26,6 +32,12 @@ const Dashboard = () => {
       },
     ],
   });
+
+const getApi=()=>{
+  axios.get(`${BASE_URL}/api/graph`).then((res)=>{console.log(res);setdaunutData(res.data)})
+}
+useEffect(()=>{getApi()},[])
+console.log(daunutData.totalCollege )
 
   return (
     <>
@@ -75,13 +87,13 @@ const Dashboard = () => {
                 }}
               >
                 <Typography id='upperText' sx={{ fontSize: "15px" }}>
-                  TOTAL COLLEGES = 413
+                  TOTAL COLLEGES = {daunutData.totalCollege}
                 </Typography>
                 <Typography id='upperText' sx={{ fontSize: "15px" }}>
-                  TOTAL COURSES = 117
+                  TOTAL COURSES = {daunutData.totalCourse}
                 </Typography>
                 <Typography id='upperText' sx={{ fontSize: "15px" }}>
-                  TOTAL USERS = 11
+                  TOTAL USERS = {daunutData.totalUser}
                 </Typography>
               </Box>
             </Paper>

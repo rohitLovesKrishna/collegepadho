@@ -8,37 +8,18 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import BASE_URL from '../../constant';
 
-
+const SelectComponent = (props)=>{return( <><Grid mb={2} item container sx={{ justifyContent: "center", alignItems: "center" }} spacing={2} ><Grid item><Typography mr="12px" fontSize="12px" color="#646c9a">{props.label}</Typography></Grid><Grid item lg={12} md={12} sm={12} xs={12}>  <FormControl sx={{ width: "100%" }}> <Select  displayEmpty  style={{fontSize:"10px"}} renderValue={(selected) => {if (selected.length === 0) {return <em>{props.placeholder}</em>;}return props.value}} value={props.value}  onChange={(e)=>{props.onChange(e,props.in)}} onClick={(event) => event.stopPropagation()} size="small" id="mylabel"  labelId="mylabel" sx={{ width: { lg: "100%", md: "100%" }, color: "black" }}>  <MenuItem sx={{ fontSize: "10px" }} disabled value=""> {props.label}</MenuItem>{props.listItems.map((item)=>{return (<MenuItem key={item} sx={{ fontSize: "10px" }} value={item}>{item}</MenuItem>)})}</Select></FormControl></Grid></Grid></>)}
 const drawerWidth = '280px'
-const headers = [
-  { label: "S.no.", key: "id" },
-  { label: "Name", key: "name" },
-  { label: "Date", key: "date" },
-  { label: "Email", key: "email" },
-  { label: "Phone", key: "phone" },
-  { label: "City", key: "city" },
-  { label: "Course", key: "course" },
-  { label: "Applied for", key: "applied" },
-];
+const headers = [{ label: "S.no.", key: "id" },{ label: "Name", key: "name" },{ label: "Date", key: "date" },{ label: "Email", key: "email" },{ label: "Phone", key: "phone" },{ label: "City", key: "city" }, { label: "Course", key: "course" },{ label: "Applied for", key: "applied" },];
 
 const Leadspage = () => {
-    const [data, setData] = useState([]);
-    
-
-    const getApi=()=>{
-        axios.get(`${BASE_URL}/api/leads`).then((res)=>{
-            console.log(res);
-            setData(res.data.response);
-        }).catch((err)=>{
-            console.log(err);
-            alert('something went wrong')
-        })
-    }
-
-    useEffect(()=>{
-        getApi();
-    },[])
-
+const [dateRange,setDateRange] = useState({from:"",to:""})
+const [textField2,setTextField2] = useState("")
+const [textField,setTextField] = useState("")
+const [data, setData] = useState([]);  
+const getApi=()=>{ axios.get(`${BASE_URL}/api/leads`).then((res)=>{ setData(res.data.response);}).catch((err)=>{console.log(err);alert('something went wrong')}) }
+useEffect(()=>{getApi();},[])
+console.log(dateRange);
     return (
         <>
                <CssBaseline />
@@ -66,45 +47,19 @@ const Leadspage = () => {
                  <Typography ml="10px" fontSize="18px"> Leads</Typography>
                </Box>
              </Grid>
- <Paper sx={{p:"20px",width:"100%",m:"20px"}} elevation={2} >
+                       <Paper sx={{p:"20px",width:"100%",m:"20px"}} elevation={2} >
                 <Grid container spacing={2}>
                     <Grid item container spacing={5}>
-                        <Grid item xs={12} sm={4} p="10px" >
+                        <Grid item xs={12} sm={12} md={4} lg={4} p="10px" >
                             <Typography>Select Date Range</Typography>
-                            <OutlinedInput type='date'  fullWidth></OutlinedInput>
+                            <OutlinedInput type='date' value={dateRange.from} onChange={(e)=>setDateRange((prev)=>{return {...prev,from:e.target.value}})}  fullWidth></OutlinedInput>
+                            <OutlinedInput type='date' value={dateRange.to} onChange={(e)=>setDateRange((prev)=>{return {...prev,to:e.target.value}})} fullWidth></OutlinedInput>
                         </Grid>
-                        <Grid item xs={12} md={4}  p="10px" 
-                        >
-                            <Typography color="#646c9a">select Stream</Typography>
-
-                            <FormControl sx={{ width: "100%" }}>
-                                <InputLabel id="mylabel" shrink={false}>None</InputLabel>
-                                <Select labelId='mylabel'>
-                                    <MenuItem value="None">
-                                        <em>None</em>
-                                    </MenuItem>
-                                    <MenuItem value={10}>Ten</MenuItem>
-                                    <MenuItem value={20}>Twenty</MenuItem>
-                                    <MenuItem value={30}>Thirty</MenuItem>
-                                </Select>
-                            </FormControl>
-
+                        <Grid item xs={12} md={4}  p="10px" >
+                             <SelectComponent   onChange={(e)=>setTextField2(e.target.value)} value={textField2} label="Select Stream" placeholder="Select Stream" listItems={["Ok","ok2"]}/> 
                         </Grid>
                         <Grid item xs={12} md={4}  p="10px">
-                            <Typography color="#646c9a">select College</Typography>
-
-                            <FormControl sx={{ width: "100%" }}>
-                                <InputLabel id="mylabel" shrink={false}>None</InputLabel>
-                                <Select labelId='mylabel'>
-                                    <MenuItem value="None">
-                                        <em>None</em>
-                                    </MenuItem>
-                                    <MenuItem value={10}>Ten</MenuItem>
-                                    <MenuItem value={20}>Twenty</MenuItem>
-                                    <MenuItem value={30}>Thirty</MenuItem>
-                                </Select>
-                            </FormControl>
-
+                            <SelectComponent   onChange={(e)=>setTextField(e.target.value)} value={textField} label="Select College" placeholder="Select College" listItems={["Ok","ok2"]}/>
                         </Grid>
                         
                     </Grid>
