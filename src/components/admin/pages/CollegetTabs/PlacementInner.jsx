@@ -1,12 +1,12 @@
-import { Button, Grid, OutlinedInput, Paper, Typography } from '@mui/material';
-
-
-import React, { useState } from 'react';
+import {Box, Button, Grid, OutlinedInput, Typography } from '@mui/material';
+import React, { useState,useEffect } from 'react';
 import SendDataBtn from '../../Global/SendDataBtn';
 import axios from 'axios';
 import BASE_URL from '../../../constant';
 
 const PlacementInner = (props) => {
+    const [posToTop, setPosToTop] = useState(false)
+  const [addMore,setAddMore] = useState(true)
   const [dataForm,setDataForm] = useState([{placementcourse:""},{placementyear:""},{companyvisited:""},{studentsplaced:""},{minsalary:""},{maxsalary:""},{avgsalary:""}]);
 const dataToServer=(e)=>{
   e.preventDefault()
@@ -20,6 +20,12 @@ const dataToServer=(e)=>{
     cid:JSON.parse(collegeId)
   }).then((res)=>{alert('Data sent successfully');}).catch((err)=>{console.log(err);})
 }
+const formResetHandler = ()=>{
+setPosToTop(true)
+setDataForm([{placementcourse:""},{placementyear:""},{companyvisited:""},{studentsplaced:""},{minsalary:""},{maxsalary:""},{avgsalary:""}])
+setAddMore(prev=>!prev)
+}
+useEffect(()=>{window.scrollTo(0,0)},[posToTop])
   return (
     <>
     <form onSubmit={dataToServer}>
@@ -73,6 +79,11 @@ const dataToServer=(e)=>{
     <SendDataBtn type="Send" disabled={!true} >Send Data</SendDataBtn>
           </Grid>
    </form>
+              <Grid item xs={12}>
+            <Box sx={{display:"flex",justifyContent:"center",mt:"15px"}}>
+             <Button disabled={addMore} onClick={formResetHandler} variant="contained" sx={{bgcolor:"#5d78ff",borderRadius:"20px"}}>Add new placement info</Button>
+           </Box>
+            </Grid>
     </>
   );
 }

@@ -49,6 +49,8 @@ import Faq from './components/Global/FooterPages.js/Faq'
 import PrivacyPolicy from './components/Global/FooterPages.js/PrivacyPolicy'
 import TermsAndConditions from './components/Global/FooterPages.js/TermsAndConditions'
 import EditCollege from '../src/components/admin/pages/EditCollege/EditCollege'
+import EditNewStream from "./components/admin/pages/EditStream/EditNewStream";
+import LandingPage from "./LandingPage/LandingPage";
 function App() {
   return (
 <>
@@ -68,9 +70,9 @@ function App() {
   <Route exact path='/footertermsandcondition' element = {<TermsAndConditions/>}/>
   <Route exact path='/home/posts/:vid' element = {<BlogInnerPage/>}/>
   <Route exact path='/college/:id' element = {<IndividualCollegeInfo/>}/>
+  <Route exact path='/welcome' element = {<LandingPage/>}/>
   <Route exact path='/admin/login' element = {<LogInPage/>}/>
   <Route exact path='/admin/register' element = {<RegisterPage/>}/>
-
 
     <Route element={<PrivateRoutes/>}>
       <Route exact path='/admin' element = {<HomepageAdmin/>}/>
@@ -92,6 +94,7 @@ function App() {
       <Route exact path='/admin/amenities' element = {<Amenities/>}/>
       <Route exact path='/admin/allpackages' element = {<AllPackages/>}/>
       <Route exact path='/admin/editcollege/:id' element = {<EditCollege/>}/>
+      <Route exact path='/admin/editstream/:id' element = {<EditNewStream/>}/>
       <Route exact path='/admin/users' element = {<Users/>}/>
       <Route exact path='/admin/mapsettings' element = {<MapSettings/>}/>
       <Route exact path='/admin/addnewamenity' element = {<AddNewAmenities/>}/>

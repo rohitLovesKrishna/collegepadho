@@ -1,27 +1,19 @@
 import { Typography,Box, Grid, Paper, TextField} from '@mui/material'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import "../AdminMaster.css"
-import photo from '../../assets/user.jpeg'
 import BluePrint from '../Global/BluePrint'
 import TableUsers from '../Global/TableUsers';
-const dummyData = [
-    {
-        id:1,photo:photo,name:"Rohit",email:'ambawata.11@gmail.com',phone:8080808080
-    },{
-        id:2,photo:photo,name:"Rohit",email:'ambawata.11@gmail.com',phone:8080808080
-    },{
-        id:3,photo:photo,name:"Rohit",email:'ambawata.11@gmail.com',phone:8080808080
-    },{
-        id:4,photo:photo,name:"Rohit",email:'ambawata.11@gmail.com',phone:8080808080
-    },{
-        id:5,photo:photo,name:"Rohit",email:'ambawata.11@gmail.com',phone:8080808080
-    },
-
-]
+import axios from 'axios';
+import BASE_URL from '../../constant'
 
 const Users = () => {
-    const [rows,setRows] =useState(10);
+  const [rows,setRows] =useState(10);
+  const [users,setUsers] = useState([]);
   const changeRowsHandler = (e)=>{setRows(e.target.value)}
+  const fetchUsers = ()=>{
+    axios.get(`${BASE_URL}/api/users`).then((res)=>{setUsers(res.data.response);}).catch((err)=>{console.log(err)})
+  }
+  useEffect(()=>{fetchUsers()},[]);
   return (
    <>
    <BluePrint page="Users">
@@ -57,7 +49,7 @@ const Users = () => {
       </Box>
     </Grid>
     <Grid item xs={12} lg={12} md={12} sm={12}>
-          <TableUsers dummyData={dummyData} rows={rows} setRows={setRows}/>
+          <TableUsers originalData={users} rows={rows} setRows={setRows} />
     </Grid>
       </Grid>
     </Paper>

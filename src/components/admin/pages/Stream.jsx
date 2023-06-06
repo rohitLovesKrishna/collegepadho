@@ -1,25 +1,23 @@
-import { Grid , Box, Typography,Button, Paper, Divider, CssBaseline} from '@mui/material';
+import {Grid,Box,Typography,Button,Paper,Divider,CssBaseline} from '@mui/material';
 import React, { useState } from 'react';
-import { IconPickerItem } from 'react-fa-icon-picker'
+import {IconPickerItem } from 'react-fa-icon-picker'
 import SidebarAdmin from '../Global/SisebarAdmin'
 import './Stream.css';
 import NavBarTop from '../Global/NavBarTop';
 import HeaderAdmin from '../Global/HeaderAdmin';
-import { ArrowCircleRightOutlined } from '@mui/icons-material';
-import { useNavigate } from 'react-router-dom';
+import {ArrowCircleRightOutlined } from '@mui/icons-material';
+import {useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import BASE_URL from '../../constant';
-import { useEffect } from 'react';
+import {useEffect } from 'react';
 
 const drawerWidth = '280px'
 const StreamAdmin = () => {
-    const navigate = useNavigate()
-    const [data, setData] = useState([])
+const navigate = useNavigate()
+const [data, setData] = useState([])
+const fetchStreams = ()=>{axios.get(`${BASE_URL}/api/stream`).then((res)=>{setData(res.data.response)})}
+useEffect(()=>fetchStreams(),[]);
 
-    const fetchStreams = ()=>{
-        axios.get(`${BASE_URL}/api/stream`).then((res)=>{setData(res.data.response)})
-    }
-    useEffect(()=>fetchStreams(),[])
     
   return (
     <>
@@ -69,8 +67,8 @@ const StreamAdmin = () => {
                 <Divider sx={{marginTop:'5px'}}></Divider>
                    <Box    sx={{ height:'fit-content'}}>
                     <span style={{display:'flex', justifyContent:'space-between',alignItems:'center', padding:'12px 10px 15px 12px'}}>
-                    <Button variant='contained' color='primary' size='small'  >Edit</Button>
-                    <Button   variant='contained' color='error' size='small' >Delete</Button>
+                    <Button onClick={()=>{navigate(`/admin/editstream/${ele._id}`)}} variant='contained' color='primary' size='small'  >Edit</Button>
+                    <Button onClick={()=>{alert(`${ele._id} : just send id to backend(post request) to delete`)}} variant='contained' color='error' size='small' >Delete</Button>
                     </span>
                 </Box>
                 </Paper>

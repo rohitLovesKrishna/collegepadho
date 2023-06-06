@@ -5,19 +5,19 @@ import HeaderAdmin from "../../Global/HeaderAdmin";
 import { Box, Grid, Button, Paper, Typography, Divider } from "@mui/material";
 import { ArrowCircleRightOutlined } from "@mui/icons-material";
 import useAddNewLogic from "../../hooks/useAddNewLogic";
-import ClgTabAmenities from "./ClgTabAmenities";
-import ClgTabSEO from "./ClgTabSEO";
-import ClgTabDescription from "./ClgTabDescription";
-import CollegeTabSchedule from "./CollegeTabSchedule";
-import ClgTabContact from "./ClgTabContact";
-import ClgTabBasic from "./ClgTabBasic";
-import ClgTabPlacement from "./ClgTabPlacement"
-import ClgTabMedia from "./ClgTabMedia";
-import ClgTabCourse from "./ClgTabCourse";
+import TabAmenities from "./TabAmenities";
+import TabSEO from "./TabSEO";
+import TabDescription from "./TabDescription";
+import TabSchedule from "./TabSchedule";
+import TabContact from "./TabContact";
+import TabBasic from "./TabBasic";
+import TabPlacement from "./TabPlacement"
+import TabMedia from "./TabMedia";
+import TabCourse from "./TabCourse";
 const drawerWidth = "280px";
 const EditCollege = () => {
-  const { selected, selectionHandler, data } = useAddNewLogic();
-  const {Description,Placement, Course, Contact,Basic,Amenities,Media,SEO,Schedule,} = selected;
+const { selected, selectionHandler, data } = useAddNewLogic();
+const {Description,Placement, Course, Contact,Basic,Amenities,Media,SEO,Schedule,} = selected;
 
   return (
     <>
@@ -69,15 +69,15 @@ const EditCollege = () => {
 </Box>
                 </Grid>
 
-                {Basic && <ClgTabBasic selectionHandler={selectionHandler}/>}
-                {Description && <ClgTabDescription selectionHandler={selectionHandler}/>}
-                {Amenities && <ClgTabAmenities  selectionHandler={selectionHandler}/>}
-                {Media &&<ClgTabMedia selectionHandler={selectionHandler}/>}
-                {SEO && <ClgTabSEO selectionHandler={selectionHandler}/>}
-                {Schedule && <CollegeTabSchedule selectionHandler={selectionHandler}/>}
-                {Contact && <ClgTabContact selectionHandler={selectionHandler}/>}
-                {Course &&<ClgTabCourse selectionHandler={selectionHandler}/>}
-                {Placement && <ClgTabPlacement selectionHandler={selectionHandler}/>}
+                {Basic && <TabBasic selectionHandler={selectionHandler}/>}
+                {Description && <TabDescription selectionHandler={selectionHandler}/>}
+                {Amenities && <TabAmenities  selectionHandler={selectionHandler}/>}
+                {Media &&<TabMedia selectionHandler={selectionHandler}/>}
+                {SEO && <TabSEO selectionHandler={selectionHandler}/>}
+                {Schedule && <TabSchedule selectionHandler={selectionHandler}/>}
+                {Contact && <TabContact selectionHandler={selectionHandler}/>}
+                {Course &&<TabCourse selectionHandler={selectionHandler}/>}
+                {Placement && <TabPlacement selectionHandler={selectionHandler}/>}
               </Paper>
             </Grid>
           </Grid>

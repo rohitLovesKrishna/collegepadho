@@ -1,19 +1,17 @@
-import {  Box, Button,FormControl,FormControlLabel, Grid,Paper, Radio, RadioGroup,Typography,} from "@mui/material";
+import {Button,FormControl,FormControlLabel, Grid,Paper, Radio, RadioGroup,Typography,} from "@mui/material";
 import React, { useState,useEffect } from "react";
 import thumbNail from "../../../assets/thumbnail.png";
 import PlacementInner from "./PlacementInner";
-import usePlacementForm from "./hooks/usePlacementForm";
 import axios from "axios";
 import BASE_URL from "../../../constant";
 import SendDataBtn from "../../Global/SendDataBtn";
 import { useNavigate } from "react-router-dom";
 
-const ClgTabPlacement = ({selectionHandler}) => {
+const ClgTabPlacement = () => {
   const navigate = useNavigate();
   const collegeId=localStorage.getItem('COLLEGE_ID')
   const [selectedImage, setSelectedImage] = useState(null);
 const [imageUrl, setImageUrl] = useState(thumbNail);
-  const {additionHandler, removeHandler ,formState} =usePlacementForm();
   const [isCourse,setIsCourse] = useState("Without info");
 useEffect(() => {if (selectedImage) {setImageUrl(URL.createObjectURL(selectedImage));}}, [selectedImage]);
 const sendRecruiterToServer=()=>{if(selectedImage){const formdata = new FormData();formdata.append('myFile',selectedImage);formdata.append('cid',JSON.parse(collegeId));axios.post(`${BASE_URL}/api/recruiters`,formdata).then((res)=>{alert('Logo uploaded successfully');setImageUrl(thumbNail)}).catch((err)=>{console.log(err);})}else{alert("Please upload image")}}
@@ -42,13 +40,8 @@ const sendRecruiterToServer=()=>{if(selectedImage){const formdata = new FormData
             </Grid>
           </Grid>
           <Grid item xs={12} borderBottom="1px solid #ebedf2" mt="30px"></Grid>
-          <Grid
-            item
-            xs={3}
-            sx={{
-              display: { xs: "none", sm: "none", md: "block", lg: "block" },
-            }}
-          ></Grid>
+          <Grid item xs={3} sx={{ display: { xs: "none", sm: "none", md: "block", lg: "block" },}}>  
+        </Grid>
  <Grid item sx={{width:"100%"}}>
    <FormControl sx={{width:"100%",alignItems:"center",justifyContent:"center",display:'flex'}}>
       <RadioGroup aria-labelledby="demo-radio-buttons-group-label" onChange={(e)=>setIsCourse(e.target.value)} defaultValue="Without info" name="radio-buttons-group">
@@ -57,18 +50,11 @@ const sendRecruiterToServer=()=>{if(selectedImage){const formdata = new FormData
       </RadioGroup>
     </FormControl>
      </Grid>
-              {isCourse === "With info"?<PlacementInner selectionHandler={selectionHandler} first={true}/>:""}
-  {formState.map((_,index)=>{
-              return (
-                <PlacementInner key={Math.random()}  onClick={()=>removeHandler(index)} first={false}/>
-              )
-            })}
+             {/* single form entry */}
+              {isCourse === "With info"?<PlacementInner/>:""}
+              {/* single form entry end */}
+  
         </Grid>
-        <Grid item xs={12}>
-            <Box sx={{display:"flex",justifyContent:"center",mt:"15px"}}>
-             <Button onClick={additionHandler} variant="contained" sx={{display: isCourse === "With info"?'flex':'none',bgcolor:"#5d78ff",borderRadius:"20px"}}>Add new placement info</Button>
-           </Box>
-            </Grid>
       </Paper>
 
 </Grid>

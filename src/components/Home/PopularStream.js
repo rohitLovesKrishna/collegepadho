@@ -41,7 +41,7 @@ const viewAllHandler = (action)=>{if(action ==='hide'){setLoadMore({btnDisplay:t
         })}
 
     {/* hiding postss */}
-    {loadMore.postDisplay ?  data.slice(6).map((item,_)=>{
+    {loadMore.postDisplay ?  data.slice(9).map((item,_)=>{
           return ( <Grid id="effect7"  key={item._id} item sx={{mb:"10px",display:loadMore.postDisplay?"block":"none"}}>
         <Box  onClick={()=>navigate(`/filterStreams/${item.parentStream}`)} id="imageBoxPopularStream" >
             <img style={{borderRadius:"5px"}}  src={`${BASE_URL}`+item.image}  alt="clg" />

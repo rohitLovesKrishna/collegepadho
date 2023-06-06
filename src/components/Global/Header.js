@@ -40,7 +40,6 @@ if(isBgColor){
             <Link onClick={()=>navigate('/pricing')}  id="navBarHide"   sx={{'&:hover':{opacity:0.6},transition:"all 0.70s ease",color:"white",mr:"20px",cursor:"pointer",textDecoration:"none"}}>Pricing</Link>
             <Link onClick={()=>navigate('/posts')}  id="navBarHide"   sx={{'&:hover':{opacity:0.6},transition:"all 0.70s ease",color:"white",mr:"20px",cursor:"pointer",textDecoration:"none"}}>Blog</Link>
             <Link  onClick={handleOpen} id="navBarHide"  sx={{'&:hover':{opacity:0.6},transition:"all 0.70s ease",color:"yellow",mr:"20px",cursor:"pointer",textDecoration:"none"}}>Admission Enquiry</Link>
-           <Link onClick={()=>navigate('/admin')} sx={{'&:hover':{opacity:0.6},transition:"all 0.70s ease",color:"white",mr:"20px",cursor:"pointer",textDecoration:"none"}}><LockOpenIcon/></Link>
            </Box>
           </Toolbar>
         </AppBar>
@@ -69,7 +68,6 @@ if(isBgColor === false){
             <Link onClick={()=>navigate('/pricing')}  id="navBarHide"   sx={{'&:hover':{opacity:0.6},transition:"all 0.70s ease",color:"white",mr:"20px",cursor:"pointer",textDecoration:"none"}}>Pricing</Link>
             <Link onClick={()=>navigate('/posts')}  id="navBarHide"   sx={{'&:hover':{opacity:0.6},transition:"all 0.70s ease",color:"white",mr:"20px",cursor:"pointer",textDecoration:"none"}}>Blog</Link>
             <Link onClick={handleOpen} id="navBarHide"  sx={{'&:hover':{opacity:0.6},transition:"all 0.70s ease",color:"yellow",mr:"20px",cursor:"pointer",textDecoration:"none"}}>Admission Enquiry</Link>
-           <Link onClick={()=>navigate('/admin')} sx={{'&:hover':{opacity:0.6},transition:"all 0.70s ease",color:"white",mr:"20px",cursor:"pointer",textDecoration:"none"}}><LockOpenIcon/></Link>
            </Box>
           </Toolbar>
         </AppBar>

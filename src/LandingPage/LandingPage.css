@@ -1,0 +1,94 @@
+.landing-page {
+  background-image: url('../components/assets/photo-1499084732479-de2c02d45fcc.jpeg');
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.overlay {
+  background-color: rgba(0, 0, 0, 0.8);
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  text-align: center;
+  color: #fff;
+}
+
+.content {
+  max-width: 800px;
+}
+.content h1{
+  background: #233ACF;
+  font-size: 60px;
+background: linear-gradient(to bottom right, #233ACF 0%, #CF1512 100%);
+background-clip: text;
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+}
+
+.content p{
+  background: #000000;
+background: radial-gradient(circle farthest-corner at center center, #F6F8F9 0%, #E5EBEE 30%, #D7DEE3 60%, #F5F7F9 100%);
+background-clip: text;
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+}
+
+h1 {
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+p {
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.signup-form,
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+input,
+textarea {
+  margin-bottom: 10px;
+  padding: 8px;
+}
+
+button {
+  background-color: #ff4081;
+  color: #fff;
+  padding: 8px 16px;
+  border: none;
+  cursor: pointer;
+}
+
+section {
+  background-color: #f9f9f9;
+  padding: 40px 0;
+}
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  height: 20px;
+}
+
+footer {
+  background-color: #333;
+  padding: 20px 0;
+  color: #fff;
+  text-align: center;
+}

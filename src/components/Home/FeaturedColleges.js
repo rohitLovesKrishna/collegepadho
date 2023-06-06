@@ -30,7 +30,7 @@ useEffect(()=>fetchCollege(),[])
         centerPadding:0,
         beforeChange : (current,next)=>setImageIndex(next),
     }
-    console.log(cardApi);
+
     if(cardApi.length > 0){
 return (
     <>

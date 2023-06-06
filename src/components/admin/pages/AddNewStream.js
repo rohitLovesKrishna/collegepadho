@@ -41,10 +41,8 @@ const AddNewStream = () => {
         formdata.append('parentStream',dataToSend.parentStream)
         formdata.append('icon',value)
         axios.post(`${BASE_URL}/api/stream`,formdata).then((res)=>{alert("successfull");console.log(res)}).catch((err)=>{console.log(err);alert("Unsuccessfull")})
-        console.log(formdata)
       }
-        // console.log(value)
-    
+
   return (
       <>
 

@@ -6,8 +6,6 @@ import FormControl from '@mui/material/FormControl';
 import emptyImage from '../../../assets/emptyImage.jpg'
 import { useState,useEffect } from 'react';
 import CameraAltIcon from '@mui/icons-material/CameraAlt';
-import AddForm from './CollegeCouseForm'
-import useAddForm from './hooks/useAddForm';
 import SendDataBtn from '../../Global/SendDataBtn';
 import axios from 'axios';
 import BASE_URL from '../../../constant';
@@ -19,14 +17,19 @@ const TextareaAutosizeComponent=(props)=>{return ( <Grid  mb={2}  item container
 
 const ClgTabCourse = ({selectionHandler}) => {
   const isDone = localStorage.getItem('STEP_7')
-  const {additionHandler,formState,removeHandler} = useAddForm()
       const [isDisabled,setIsDisabled] = useState(false)
     const [isCourse,setIsCourse] = useState("");
+    const [posToTop, setPosToTop] = useState(false)
+    const [data, setData] = useState([])
     const [addMore,setAddMore] = useState(false)
     const [dataForm,setDataForm] = useState([{stream:""},{courseLevel:""},{courseName:""},{courseDesc:""},{courseFee:""},{seats:""},{duration:""},{courseDeliveryMode:""},{entranceExams:""},{tutionFees:""},{specialisation:""}]);
 const [selectedImage, setSelectedImage] = useState(null);
 const [imageUrl, setImageUrl] = useState(emptyImage);
 useEffect(() => {if (selectedImage) {setImageUrl(URL.createObjectURL(selectedImage));}}, [selectedImage]);
+    const fetchStreams = ()=>{
+        axios.get(`${BASE_URL}/api/stream`).then((res)=>{setData(res.data.response)})
+    }
+    useEffect(()=>fetchStreams(),[])
 const dataToServer=(e)=>{
   e.preventDefault();
 const collegeID = localStorage.getItem('COLLEGE_ID')
@@ -51,6 +54,16 @@ if(isCourse === 'With Course'){
 useEffect(()=>{if(addMore){setAddMore(true)}},[addMore])
 useEffect(()=>{if(isCourse === "Without Course"){setIsDisabled(false)}},[isCourse])
 useEffect(()=>{if(isDone){setIsDisabled(true)}},[isDone])
+const formResetHandler = ()=>{
+setPosToTop(true)
+setDataForm([{stream:""},{courseLevel:""},{courseName:""},{courseDesc:""},{courseFee:""},{seats:""},{duration:""},{courseDeliveryMode:""},{entranceExams:""},{tutionFees:""},{specialisation:""}])
+setImageUrl(emptyImage)
+setSelectedImage(null)
+setIsDisabled(false);
+setAddMore(prev=>!prev)
+setPosToTop(false)
+}
+useEffect(()=>{window.scrollTo(0,0)},[posToTop])
   return (
     <>
     <form onSubmit={dataToServer}>
@@ -66,8 +79,8 @@ useEffect(()=>{if(isDone){setIsDisabled(true)}},[isDone])
          {isCourse === "With Course"?"": <SendDataBtn onClick={()=>selectionHandler("Placement")} type="Next" disabled={!isDisabled} >Next Step</SendDataBtn>} 
         <Grid   mb={2}  item container sx={{display: isCourse === "With Course"?'flex':'none',justifyContent: "center", alignItems: "center" }} spacing={2}>
             <Paper sx={{m:"10px",p:"5px",width:"100%",mb:"0px"}} elevation={0}>
-                <Typography>Add couse</Typography>
-                 <SelectComponent in={0} onChange={(e,i)=>{const newList =[...dataForm];newList[i].stream = e.target.value;setDataForm(newList)}} value={dataForm[0].stream} label="Stream" placeholder="Select Stream" listItems={["Management","Engineering","Pharmacy","Dental","Education","Journalism","Law","Medical","Architecture","Arts and Humanities","Information Technology","Commerce and Banking","Hotel Management","Design Colleges"]}/>
+                <Typography>Add course</Typography>
+                 <SelectComponent in={0} onChange={(e,i)=>{const newList =[...dataForm];newList[i].stream = e.target.value;setDataForm(newList)}} value={dataForm[0].stream} label="Stream" placeholder="Select Stream"  listItems={data.map((ele)=>{return (ele.stream)})}/>
                   <SelectComponent in={1} onChange={(e,i)=>{const newList =[...dataForm];newList[i].courseLevel = e.target.value;setDataForm(newList)}} value={dataForm[1].courseLevel} label="Course Level" placeholder="Select Course Level" listItems={["Graduation","Post Graduation"]}/>
                   <TextComponent  in={2}  onChange={(e,i)=>{const newList =[...dataForm];newList[i].courseName = e.target.value;;setDataForm(newList)}} value={dataForm[2].courseName}  label="Course name" placeholder = "Enter course name.." />
                 <TextareaAutosizeComponent  in={3}  onChange={(e,i)=>{const newList =[...dataForm];newList[i].courseDesc = e.target.value;;setDataForm(newList)}} value={dataForm[3].courseDesc} label="Course description" rows={6} />
@@ -84,17 +97,10 @@ useEffect(()=>{if(isDone){setIsDisabled(true)}},[isDone])
                          <Button component={"label"} disableRipple><input onChange={e => setSelectedImage(e.target.files[0])} type='file' hidden={true} color="#646c9a"/> <CameraAltIcon/>Upload course image(800x533)</Button>
                      </Paper>
             </Grid>
-              {formState.map((_,index)=>{
-              return (
-                <div key={Math.random()}>
-                    <AddForm   onClick={()=>removeHandler(index)}/>
-                </div>
 
-              )
-            })}
-            <Grid item xs={12}>
+          <Grid item xs={12}>
             <Box sx={{display:"flex",justifyContent:"center",mt:"15px"}}>   
-             <Button disabled={!addMore} onClick={additionHandler} variant="contained" sx={{display:  isCourse?'flex':'none',bgcolor:"#5d78ff",borderRadius:"20px"}}>Add new Course</Button>
+             <Button disabled={!addMore} onClick={formResetHandler} variant="contained" sx={{display:  isCourse?'flex':'none',bgcolor:"#5d78ff",borderRadius:"20px"}}>Add new Course</Button>
            </Box>
             </Grid>
             </Paper>

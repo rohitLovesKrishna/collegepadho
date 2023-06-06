@@ -56,7 +56,7 @@ if(index === 2){
   const newList = [...images];
   newList[2].imageURL = emptyImage;setImages(newList)
   }
-  if(!images[2].file){
+  if(!images[2].file || images[2].imageURL === emptyImage){
 alert("Please upload image")
   }
 

@@ -14,10 +14,10 @@ const SelectComponent = (props)=>{return( <><Grid mb={2} item container sx={{ ju
 const TextareaAutosizeComponent=(props)=>{return ( <Grid  mb={2}  item container sx={{ justifyContent: "center", alignItems: "center" }} spacing={2}><Grid item><Typography mr="14px" fontSize="12px" color="#646c9a">{props.label}</Typography></Grid><Grid item lg={12} md={12} sm={12} xs={12}><TextareaAutosize  disabled={props.disabled}  required value={props.value} onChange={props.onChange} style={{ width: "100%", outline: "none" }} placeholder={props.placeholder} minRows={props.rows}/></Grid></Grid>)}
 
 const ClgTabBasic = ({selectionHandler}) => {
-
-  const collegeId = localStorage.getItem('COLLEGE_ID');
-  const [isDisabled,setIsDisabled] = useState(false)
-   const [images,handleChange] = useMedia()
+const collegeId = localStorage.getItem('COLLEGE_ID');
+const [isDisabled,setIsDisabled] = useState(false)
+const [data, setData] = useState([])
+const [images,handleChange] = useMedia()
 const [countryData,setCountryData] = useState([])
 const [locationData,setLocationData] = useState([])
 const fetchCity = ()=>{axios.get(`${BASE_URL}/api/location`).then((res)=>{setLocationData(res.data.response)}).catch((err)=>{console.log(err);})}
@@ -27,6 +27,10 @@ const [textField2,setTextField2] = useState({country:"",state:"",address:"",loca
 const {additionHandler,removeHandler,selectHandleChange,streamState} = useAddLogic()
 const {additionHandler2, removeHandler2,selectHandleChange2 ,awardState} = useAwards()
 const [textField,setTextField] = useState({googleid:"",featuredType:"",collegeType:"",name:"",shortDescription:"",approved:"",established:"",course:""});
+    const fetchStreams = ()=>{
+        axios.get(`${BASE_URL}/api/stream`).then((res)=>{setData(res.data.response)})
+    }
+    useEffect(()=>fetchStreams(),[])
 const dataToServerHandler = (e)=>{
   e.preventDefault()
   const formdata = new FormData();
@@ -45,7 +49,6 @@ const dataToServerHandler = (e)=>{
   formdata.append('state',textField2.state)
   formdata.append('fullAddress',textField2.address)
   formdata.append('location',textField2.location)
-  console.log(formdata.get('location'));
 axios.post(`${BASE_URL}/api/college`,formdata).then((res)=>{alert('College basic info added successfully');if(res.data.message === 'College Created'){localStorage.setItem('COLLEGE_ID',JSON.stringify(res.data.response));setIsDisabled(true);}}).catch((err)=>{console.log(err);})
 }
 useEffect(()=>fetchCountries(),[])
@@ -70,7 +73,7 @@ useEffect(()=>{if(collegeId){setIsDisabled(true);}},[collegeId])
       return  ( <TextComponent2 disabled={isDisabled}  key={item+index} onClick2={()=>removeHandler2(index)} onClick={additionHandler2}  onChange={selectHandleChange2} type ="multiple" in={index}  value={awardState[index].award}  label="Award"  placeholder = "Enter details here.."/>)
      })}
     {streamState.map((item,index)=>{
-      return  <SelectComponent disabled={isDisabled} key={item+index} onClick2={removeHandler} onClick={additionHandler} type ="multiple" in={index} onChange={selectHandleChange} value={streamState[index].stream} label="Stream" placeholder="Select Stream" listItems={["Management","Engineering","Pharmacy","Dental","Education","Journalism","Law","Medical","Architecture","Arts and Humanities","Information Technology","Commerce and Banking","Hotel Management","Design Colleges"]}/>
+      return  <SelectComponent disabled={isDisabled} key={item+index} onClick2={removeHandler} onClick={additionHandler} type ="multiple" in={index} onChange={selectHandleChange} value={streamState[index].stream} label="Stream" placeholder="Select Stream" listItems={data.map((ele)=>{return (ele.stream)})}/>
     })}
     <Grid mb={2} item container sx={{justifyContent: "space-evenly", alignItems: "center",flexDirection:"row" }} spacing={2}> 
     <Grid item  lg={6} md={6} sm={6}  xs={12}><Typography  mr="14px" fontSize="12px" color="#646c9a">College Thumbnail<br/>460 X 306</Typography>
