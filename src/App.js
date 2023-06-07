@@ -50,7 +50,7 @@ import PrivacyPolicy from './components/Global/FooterPages.js/PrivacyPolicy'
 import TermsAndConditions from './components/Global/FooterPages.js/TermsAndConditions'
 import EditCollege from '../src/components/admin/pages/EditCollege/EditCollege'
 import EditNewStream from "./components/admin/pages/EditStream/EditNewStream";
-import LandingPage from "./LandingPage/LandingPage";
+import LandingPage from "./LandingPage/Home/LandingPage";
 function App() {
   return (
 <>

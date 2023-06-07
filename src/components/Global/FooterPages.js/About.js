@@ -14,13 +14,13 @@ const About = () => {
       <Header isBgColor={true} />
         <Grid item xs={12} sx={{backgroundColor:'#f2f4f8',display:'flex', flexDirection:'column', justifyContent:'center', alignItems:'center', padding:'10px', mt:{lg:'50px', md:'49px', sm:'53px' , xs:'38px'}}}>
             <Box sx={{width:{lg:'55%', md:'70%', sm:'90%', xs:'90%', padding:'10px'}}}>
-            <img src={bca} width='100%' height='100%'/>
+            <img src={bca} alt='pic' width='100%' height='100%'/>
             </Box>
             </Grid>
             <Grid item xs={12} sx={{backgroundColor:'#f2f4f8',display:'flex', justifyContent:'center', alignItems:'center', flexDirection:'column',}}>
                 <Box sx={{width:'70px'}}>
 
-                      <img  src={earth} width='100%' height='100%'/>
+                      <img  src={earth} alt='pic' width='100%' height='100%'/>
                 </Box>
             <Typography variant='h5' fontWeight={600}>About</Typography>
 

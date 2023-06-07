@@ -15,13 +15,13 @@ const TermsAndCondition = () => {
        
         <Grid item xs={12} sx={{backgroundColor:'#f2f4f8',display:'flex', flexDirection:'column', justifyContent:'center', alignItems:'center', padding:'10px', mt:{lg:'57px', md:'57px', sm:'59px' , xs:'47px'}}}>
             <Box sx={{width:{lg:'55%', md:'70%', sm:'90%', xs:'90%'}}}>
-            <img src={bca} width='100%' height='100%'/>
+            <img src={bca} alt='pic' width='100%' height='100%'/>
             </Box>
             </Grid>
             <Grid item xs={12} sx={{backgroundColor:'#f2f4f8',display:'flex', justifyContent:'center', alignItems:'center', flexDirection:'column',}}>
                 <Box sx={{width:'70px'}}>
 
-                      <img  src={tsc} width='100%' height='100%'/>
+                      <img  src={tsc} alt='pic' width='100%' height='100%'/>
                 </Box>
             <Typography variant='h5' fontWeight={600}>Terms and conditions</Typography>
 

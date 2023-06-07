@@ -14,13 +14,13 @@ const Faq = () => {
     <Header isBgColor={true}/>
         <Grid item xs={12} sx={{backgroundColor:'#f2f4f8',display:'flex', flexDirection:'column', justifyContent:'center', alignItems:'center', padding:'10px', mt:{lg:'55px', md:'55px', sm:'55px', xs:'45 px'}}}>
             <Box sx={{ width:{lg:'55%', md:'70%', sm:'90%', xs:'90%'}}}>
-            <img src={bca} width='100%' height='100%'/>
+            <img src={bca} alt='pic' width='100%' height='100%'/>
             </Box>
             </Grid>
             <Grid item xs={12} sx={{backgroundColor:'#f2f4f8',display:'flex', justifyContent:'center', alignItems:'center', flexDirection:'column',}}>
                 <Box sx={{width:'70px'}}>
 
-                      <img  src={faq} width='100%' height='100%'/>
+                      <img  src={faq} alt='pic' width='100%' height='100%'/>
                 </Box>
             <Typography variant='h5' fontWeight={600}>FAQ</Typography>
          </Grid>

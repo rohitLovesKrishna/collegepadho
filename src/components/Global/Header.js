@@ -1,4 +1,3 @@
-import LoginIcon from '@mui/icons-material/Login';
 import {AppBar,Toolbar,CssBaseline,Box,Link,} from '@mui/material';
 import logo from '../assets/dark_logo.png'
 import { useState } from 'react';
@@ -7,7 +6,6 @@ import SideMenu from './SideMenu';
 import '../Home/Master.css'
 import { useNavigate } from 'react-router-dom';
 import MenuOpenIcon from '@mui/icons-material/MenuOpen';
-import LockOpenIcon from '@mui/icons-material/LockOpen';
 
 
 

@@ -30,7 +30,7 @@ const ModalPage = ({open,setOpen}) => {
     const getApi=()=>{
       if(data.name && data.email && data.mobile.length === 10 && data.city && data.course){
  setSendingData(true)
-        axios.post(`/api/leads`, {
+        axios.post(`${BASE_URL}/api/leads`, {
           name:data.name,
           email:data.email,
           mobile:data.mobile,

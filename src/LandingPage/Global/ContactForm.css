@@ -1,0 +1,80 @@
+.landing-page {
+  background-image: transparent;
+  background-size: cover;
+  background-position: center;
+  height: 90vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.bannerAreaa{
+  padding-top: 60px;
+  padding-left: 10px;
+  padding-right: 10px;
+    background: url('../../components/assets/young-female-graduate-against-the-background-of-university-graduates-picture-id1151567114.jpeg') no-repeat center center;
+    height: fit-content;
+    -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-color: rgb(56, 53, 53);
+background-blend-mode: multiply;
+}
+
+.overlay {
+  /* background-color: rgba(0, 0, 0, 0.8); */
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  text-align: center;
+  color: #fff;
+}
+
+.content {
+  max-width: fit-content;
+}
+
+h1 {
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+p {
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.signup-form,
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 100%;
+}
+
+h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+input,
+textarea {
+  margin-bottom: 10px;
+  padding: 8px;
+}
+
+button {
+  background-color: #ff4081;
+  color: #fff;
+  padding: 8px 16px;
+  border: none;
+  cursor: pointer;
+}
+
+section {
+  background-color: #f9f9f9;
+  padding: 40px 0;
+}

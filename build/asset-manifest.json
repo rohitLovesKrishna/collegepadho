@@ -1,9 +1,8 @@
 {
   "files": {
-    "main.css": "/static/css/main.1a88b833.css",
-    "main.js": "/static/js/main.b6f9baae.js",
+    "main.css": "/static/css/main.5d6b4ed1.css",
+    "main.js": "/static/js/main.e907609f.js",
     "static/js/787.805726ff.chunk.js": "/static/js/787.805726ff.chunk.js",
-    "static/media/photo-1499084732479-de2c02d45fcc.jpeg": "/static/media/photo-1499084732479-de2c02d45fcc.264f8f41cc7346470d03.jpeg",
     "static/media/noimage.gif": "/static/media/noimage.7552d12da73e253861ee.gif",
     "static/media/education_loadig2.gif": "/static/media/education_loadig2.f1b97e632a3ecd368c04.gif",
     "static/media/home_banner.jpg": "/static/media/home_banner.0fb6e5bba98e29c91b64.jpg",
@@ -13,6 +12,7 @@
     "static/media/clg2.jpg": "/static/media/clg2.b7421f03b88ddc9784c1.jpg",
     "static/media/clg4.jpg": "/static/media/clg4.d47b7f2d0064a62dc6ed.jpg",
     "static/media/cartooncllg.jpg": "/static/media/cartooncllg.4bbca55d50dda3770854.jpg",
+    "static/media/young-female-graduate-against-the-background-of-university-graduates-picture-id1151567114.jpeg": "/static/media/young-female-graduate-against-the-background-of-university-graduates-picture-id1151567114.a3d93c8530112daf1717.jpeg",
     "static/media/edu.jpg": "/static/media/edu.2c14ef0fdb3a76b91502.jpg",
     "static/media/whatsapp_icon-icons.com_62756.png": "/static/media/whatsapp_icon-icons.com_62756.6869cb78f1bb2b072c6f.png",
     "static/media/mba.jpg": "/static/media/mba.ca0cc37d4d52450ac728.jpg",
@@ -31,12 +31,12 @@
     "static/media/slick.woff": "/static/media/slick.295183786cd8a1389865.woff",
     "static/media/faq.svg": "/static/media/faq.fbe64be977191cc106f9c64a96ede651.svg",
     "index.html": "/index.html",
-    "main.1a88b833.css.map": "/static/css/main.1a88b833.css.map",
-    "main.b6f9baae.js.map": "/static/js/main.b6f9baae.js.map",
+    "main.5d6b4ed1.css.map": "/static/css/main.5d6b4ed1.css.map",
+    "main.e907609f.js.map": "/static/js/main.e907609f.js.map",
     "787.805726ff.chunk.js.map": "/static/js/787.805726ff.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.1a88b833.css",
-    "static/js/main.b6f9baae.js"
+    "static/css/main.5d6b4ed1.css",
+    "static/js/main.e907609f.js"
   ]
 }

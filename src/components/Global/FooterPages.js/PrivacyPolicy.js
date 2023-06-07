@@ -2,9 +2,8 @@ import Header from '../../Global/Header'
 import Infotag from "../../Home/Infotag"
 import tagMba from '../../assets/tagmba.jpg'
 import Footer from "../../Global/Footer"
-import BarLine from '../../Global/BarLine'
 import tag from '../../assets/tag.jpg'
-import {AppBar,Toolbar,Box,Typography,Divider, Grid} from '@mui/material'
+import {Box,Typography,Divider, Grid} from '@mui/material'
 import privacy from '../../assets/privacy-policy.svg'
 
 const PrivacyPolicy = () => {
@@ -15,7 +14,7 @@ const PrivacyPolicy = () => {
   <Box sx={{mb:"90px",bgcolor:"#f8f8f8", display:'flex', justifyContent:'center', alignItems:'center', flexDirection:'column', padding:'10px', mt:{lg:"55px", md:'55px', sm:'55px ', xs:'43px'}}}>
   <Infotag pic={tag} />
   <Box sx={{display:"flex",justifyContent:"center",alignItems:"center",flexDirection:"column",p:"15px",}}>
-    <img src={privacy} height="70rem" />
+    <img src={privacy} alt='pic' height="70rem" />
     <Typography variant='h4'><b>Privacy policy</b></Typography>
   </Box>
   </Box>
