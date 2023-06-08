@@ -60,7 +60,8 @@ const ContactForm = () => {
           email:data[1],
           mobile:data[2],
           city:data[3],
-          course:data[4]
+          course:data[4],
+          source:"Landing Page"
         }).then((res)=>{
           setMessage("success");
           setData(["","","","",""]);

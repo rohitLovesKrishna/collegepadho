@@ -35,7 +35,8 @@ const ModalPage = ({open,setOpen}) => {
           email:data.email,
           mobile:data.mobile,
           city:data.city,
-          course:data.course
+          course:data.course,
+          source:"Website"
         }).then((res)=>{
           console.log(res)
           setMessage("success")
