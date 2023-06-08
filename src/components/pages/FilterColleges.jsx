@@ -186,19 +186,20 @@ useEffect(()=>{window.scrollTo(0,0);},[])
 
           {
             cardApi.map((ele)=>{
-              return(
-                 <Grid key={ele._id}  onClick={()=>navigate(`/college/${ele._id}`)} item id='rightBox' xs={12} sm={6}  md={4} lg={4} sx={{height:"420px",backgroundColor:'#feffed', boxShadow: '0px 0px 5px 0px rgba(181,132,16,1)', borderRadius:'7px', margin:'48px 20px 0px 20px' }}>
+              if(cardApi.length > 0){
+           return(
+                 <Grid key={ele._id}  onClick={()=>navigate(`/college/${ele._id}`)} item id='rightBox' xs={12} sm={6}  md={4} lg={4} sx={{height:"fit-content",backgroundColor:'#feffed', boxShadow: '0px 0px 5px 0px rgba(181,132,16,1)', borderRadius:'7px', margin:'48px 20px 0px 20px' }}>
                   <Box  id='clgimg'>
             <img  src={`${BASE_URL}`+ele.image} alt="ok" width='100%' height='200px'style={{ boxSizing:'border-box', borderRadius:'7px 7px 0px 0px'}}/>
 
                   </Box>
-            <Box sx={{ margin:'5px'}}>
+            <Box sx={{ margin:'5px',height:"170px"}}>
             <Typography variant='h5' sx={{color:'#1565c0', m:'0px 0px 2px 10px'}}>{ele.collegeName}</Typography>
             <Typography fontWeight={600} sx={{m:'0px 0px 2px 10px'}}>{ele.location},{ele.country}</Typography>
-            <Typography sx={{fontSize:'12px',m:'0px 0px 2px 10px'}}>{ele.shortDescription}</Typography>
+            <Typography sx={{fontSize:'12px',m:'0px 0px 2px 10px'}}>{ele.shortDescription.slice(0,100)+"..."}</Typography>
              
              <Grid item container lg={12} md={12} sm={12} xs={12}>
-             {courseApi.filter((item)=>{return item.cid === ele._id}).map((course,index)=>{return (
+             {courseApi.filter((item)=>{return item.cid === ele._id}).slice(0,4).map((course,index)=>{return (
              <Grid item key={course+index} sx={{padding:'1px 5px 1px 5px'}} lg={6} md={6} sm={12} xs={12}>
               <Typography sx={{color:'#388e3c', border:'1px solid #388e3c', fontSize:'13px', padding:'1px 4px 1px 4px', }}>{course.courseName}</Typography>
             </Grid>)})}
@@ -221,6 +222,10 @@ useEffect(()=>{window.scrollTo(0,0);},[])
            
           </Grid>
               )
+              }else{
+                return <Typography>Sorry no data found!!</Typography>
+              }
+   
             })
           }
 

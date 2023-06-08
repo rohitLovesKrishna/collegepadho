@@ -14,16 +14,14 @@ const drawerWidth ="280px"
 
 
 const BlogPost = () => {
-    const[blogData, setBlogData]=useState([])
+const[blogData, setBlogData]=useState([])
 const [rows,setRows] =useState(10);
-  const changeRowsHandler = (e)=>{setRows(e.target.value)}
+const changeRowsHandler = (e)=>{setRows(e.target.value)}
 
 
   const getApi=()=>{
-    axios.get(`${BASE_URL}/api/blog`).then((res)=>{console.log(res);setBlogData(res.data.response)}).catch((err)=>{console.log(err)})
+    axios.get(`${BASE_URL}/api/blog`).then((res)=>{setBlogData(res.data.response)}).catch((err)=>{console.log(err)})
   }
-  
-
   useEffect(()=>{
       getApi();
   },[])

@@ -51,10 +51,14 @@ import TermsAndConditions from './components/Global/FooterPages.js/TermsAndCondi
 import EditCollege from '../src/components/admin/pages/EditCollege/EditCollege'
 import EditNewStream from "./components/admin/pages/EditStream/EditNewStream";
 import LandingPage from "./LandingPage/Home/LandingPage";
+import EditNewAmenity from "./components/admin/pages/EditAmenities/EditNewAmenity";
+import EditNewBlog from "./components/admin/pages/EditBlog/EditNewBlog";
+import EditNewLocation from "./components/admin/pages/EditLocation/EditNewLocation";
+import EditNewUser from "./components/admin/pages/EditUser/EditNewUser";
 function App() {
   return (
 <>
- <ScrollToTopFab/>
+<ScrollToTopFab/>
 <BrowserRouter>
 <Routes>
   <Route exact path="/" element ={<Homepage/>}/>
@@ -74,7 +78,7 @@ function App() {
   <Route exact path='/admin/login' element = {<LogInPage/>}/>
   <Route exact path='/admin/register' element = {<RegisterPage/>}/>
 
-    <Route element={<PrivateRoutes/>}>
+    {/* <Route element={<PrivateRoutes/>}> */}
       <Route exact path='/admin' element = {<HomepageAdmin/>}/>
       <Route exact path='/admin/allcolleges' element = {<Colleges/>}/>
       <Route exact path='/admin/fo5n4ejplzppvs0y8d52u3bkuwvd0m6y57365a0tyub6p044fn7e6csupcqmwxq5ikuncw0bjrwbvltj0f9v2kdcijvvo2wlwqlh' element = {<AddNewCollege/>}/>
@@ -95,6 +99,10 @@ function App() {
       <Route exact path='/admin/allpackages' element = {<AllPackages/>}/>
       <Route exact path='/admin/editcollege/:id' element = {<EditCollege/>}/>
       <Route exact path='/admin/editstream/:id' element = {<EditNewStream/>}/>
+      <Route exact path='/admin/editamenity/:id' element = {<EditNewAmenity/>}/>
+      <Route exact path='/admin/editblog/:id' element = {<EditNewBlog/>}/>
+      <Route exact path='/admin/editlocation/:id' element = {<EditNewLocation/>}/>
+      <Route exact path='/admin/edituser/:id' element = {<EditNewUser/>}/>
       <Route exact path='/admin/users' element = {<Users/>}/>
       <Route exact path='/admin/mapsettings' element = {<MapSettings/>}/>
       <Route exact path='/admin/addnewamenity' element = {<AddNewAmenities/>}/>
@@ -109,7 +117,7 @@ function App() {
       <Route exact path='/admin/smtpsettings' element = {<SmtpSetting/>}/>
       <Route exact path='/admin/leads' element = {<Leadspage/>}/>
       <Route exact path='/admin/offlinepayment' element = {<OfflinePayment/>}/>
-    </Route>
+    {/* </Route> */}
   
 
 </Routes>

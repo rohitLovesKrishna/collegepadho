@@ -8,16 +8,18 @@ import { TablePagination, Box,Button,Checkbox,FormControlLabel,Menu,MenuItem,Typ
 import LensIcon from '@mui/icons-material/Lens';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 
 export default function TableBLog({rows,setRows,dummyData}) {
   const [page, setPage] = useState(0);
+  const [isBlog,setIsBlog] = useState(null)
   const handleChangePage = (_, newPage) => {setPage(newPage);};
   const handleChangeRowsPerPage = (event) => {setRows(event.target.value);setPage(0);};
-
+  const navigate = useNavigate();
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
-  const handleClick = (event) => {setAnchorEl(event.currentTarget);};
+  const handleClick = (event,id) => {setAnchorEl(event.currentTarget);setIsBlog(id)};
   const handleClose = () => {setAnchorEl(null);};
  console.log(dummyData)
   return (
@@ -51,7 +53,7 @@ export default function TableBLog({rows,setRows,dummyData}) {
         </TableCell>
       <TableCell><Button color='success' variant='contained' sx={{height:"15px",fontSize:"7px"}}>Active</Button></TableCell>
       <TableCell>
-        <Button onClick={handleClick} disableRipple endIcon={<ArrowDropDownIcon/>} sx={{bgcolor:"#42A5F5 ",borderRadius:"50px",width:"100%"}} variant="contained" color="primary" >
+        <Button onClick={(e,id)=>handleClick(e,college._id)} disableRipple endIcon={<ArrowDropDownIcon/>} sx={{bgcolor:"#42A5F5 ",borderRadius:"50px",width:"100%"}} variant="contained" color="primary" >
         Action
       </Button>
       </TableCell>
@@ -77,11 +79,11 @@ export default function TableBLog({rows,setRows,dummyData}) {
 
      <Menu id="basic-menu" anchorEl={anchorEl} open={open} onClose={handleClose} MenuListProps={{'aria-labelledby': 'basic-button',}} >
         <MenuItem onClick={handleClose}>View in website</MenuItem>
-        <MenuItem onClick={handleClose}>Edit</MenuItem>
+        <MenuItem onClick={()=>navigate(`/admin/editblog/${isBlog}`)}>Edit</MenuItem>
         <MenuItem onClick={handleClose}>Mark as pending</MenuItem>
         <MenuItem onClick={handleClose}>Mark as featured</MenuItem>
       </Menu>
-    </>
+ </>
 
-  );
+  );
 }

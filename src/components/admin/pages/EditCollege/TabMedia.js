@@ -62,7 +62,6 @@ alert("Please upload image")
   }
 }
 if(index === 2){
-  console.log(images[2].file)
   if(images[2].file){
   const formdata = new FormData();
   formdata.append('myFile',images[2].file);
@@ -71,7 +70,7 @@ if(index === 2){
       setIm(true);
   //state reset
   }
-  if(!images[2].file){
+  if(images[2].file === ""){
 alert("Please upload image")
   }
 

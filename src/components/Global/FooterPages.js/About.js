@@ -74,11 +74,6 @@ const About = () => {
             </Grid>
 
              <Footer/>
-
-
-
-
-
             </Grid>
           
          

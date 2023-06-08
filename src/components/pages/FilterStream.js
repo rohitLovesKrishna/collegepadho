@@ -58,13 +58,14 @@ const [courseApi,setCourseApi] = useState([])
 useEffect(()=>{fetchCities()},[])
 const fetchStream = ()=>{axios.get(`${BASE_URL}/api/stream`).then((res)=>{setStreams(res.data.response)}).catch((err)=>{console.log(err);})}
 useEffect(()=>{fetchStream()},[])
-const fetchCollege=()=>{axios.get(`${BASE_URL}/api/college`).then((res)=>{setCardApi(res.data.responses)}).catch((err)=>{console.log(err);})}
+const fetchCollege=()=>{axios.get(`${BASE_URL}/api/college`).then((res)=>{setCardApi(res.data.responses.filter((item)=>{ return item.stream.indexOf(param.stream) !== -1}))}).catch((err)=>{console.log(err);})}
 useEffect(()=>fetchCollege(),[])
 const fetchCourse=()=>{axios.get(`${BASE_URL}/api/course`).then((res)=>{setCourseApi(res.data.response)}).catch((err)=>{console.log(err);})}
 useEffect(()=>fetchCourse(),[])
 const fetchAmenities = ()=>{axios.get(`${BASE_URL}/api/amenity`).then((res)=>{setAmenitiesData(res.data.response)}).catch((err)=>{console.log(err);})}
 useEffect(()=>{fetchAmenities()},[])
 useEffect(()=>{window.scrollTo(0,0);},[])
+
   return (
       <>
           <ModalPage open={open} setOpen={setOpen}/>
@@ -154,9 +155,8 @@ useEffect(()=>{window.scrollTo(0,0);},[])
            
         </Grid>
         <Grid item container   xs={12} sm={12} md={8} lg={8} sx={{justifyContent:'center', alignItems:'flex-start',height:'fit-content' }}>
-
-              {cardApi.filter((item)=>{ return item.stream.includes(param.stream)}).map((ele)=>{
-              return(
+{cardApi.length > 0 ? cardApi.map((ele)=>{
+             return(
                  <Grid key={ele._id}  onClick={()=>navigate(`/college/${ele._id}`)} item id='rightBox' xs={12} sm={6}  md={4} lg={4} sx={{height:"420px",backgroundColor:'#feffed', boxShadow: '0px 0px 5px 0px rgba(181,132,16,1)', borderRadius:'7px', margin:'48px 20px 0px 20px' }}>
                   <Box  id='clgimg'>
             <img  src={`${BASE_URL}`+ele.image} alt="ok" width='100%' height='200px'style={{ boxSizing:'border-box', borderRadius:'7px 7px 0px 0px'}}/>
@@ -186,9 +186,9 @@ useEffect(()=>{window.scrollTo(0,0);},[])
                   <Typography variant='body1' fontWeight={600} sx={{color:'white'}} >0.0</Typography>
                 </Box>
               </Box>
-              </Box></Grid>)})
-}
-
+              </Box></Grid>)
+ })
+:<Typography sx={{marginTop:"200px"}}>Sorry no data found!!</Typography>}
         </Grid>
 
     </Grid>

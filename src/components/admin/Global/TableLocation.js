@@ -8,16 +8,18 @@ import { TablePagination,Button,Menu,MenuItem,Typography, TableFooter } from '@m
 
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 
 export default function TableLocation({rows,setRows,data}) {
   const [page, setPage] =useState(0);
+  const navigate = useNavigate();
+  const [isLocation,setIsLocation] = useState(null);
   const handleChangePage = (_, newPage) => {setPage(newPage);};
   const handleChangeRowsPerPage = (event) => {setRows(event.target.value);setPage(0);};
-
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
-  const handleClick = (event) => {setAnchorEl(event.currentTarget);};
+  const handleClick = (event,id) => {setAnchorEl(event.currentTarget);setIsLocation(id)};
   const handleClose = () => {setAnchorEl(null);};
 
   return (
@@ -46,7 +48,7 @@ export default function TableLocation({rows,setRows,data}) {
         <Typography fontWeight={700}>{location.country}</Typography>
       </TableCell>
       <TableCell>
-        <Button onClick={handleClick} disableRipple endIcon={<ArrowDropDownIcon/>} sx={{bgcolor:"#42A5F5 ",borderRadius:"50px",width:"100%"}} variant="contained" color="primary" >
+        <Button onClick={(e,id)=>{handleClick(e,location._id)}} disableRipple endIcon={<ArrowDropDownIcon/>} sx={{bgcolor:"#42A5F5 ",borderRadius:"50px",width:"100%"}} variant="contained" color="primary" >
         Action
       </Button>
       </TableCell>
@@ -71,7 +73,7 @@ export default function TableLocation({rows,setRows,data}) {
 
      <Menu id="basic-menu" anchorEl={anchorEl} open={open} onClose={handleClose} MenuListProps={{'aria-labelledby': 'basic-button',}} >
         <MenuItem onClick={handleClose}>View in website</MenuItem>
-        <MenuItem onClick={handleClose}>Edit</MenuItem>
+        <MenuItem onClick={()=>navigate(`/admin/editlocation/${isLocation}`)}>Edit</MenuItem>
         <MenuItem onClick={handleClose}>Mark as pending</MenuItem>
         <MenuItem onClick={handleClose}>Mark as featured</MenuItem>
       </Menu>

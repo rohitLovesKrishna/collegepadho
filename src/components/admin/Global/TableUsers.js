@@ -9,16 +9,19 @@ import TableRow from '@mui/material/TableRow';
 import { TablePagination,Button,Menu,MenuItem,Typography, TableFooter } from '@mui/material';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 
 export default function TableUsers({rows,setRows,originalData}) {
   const [page, setPage] = useState(0);
+  const navigate = useNavigate();
+  const [isUser,setIsUSer] = useState(null);
   const handleChangePage = (_, newPage) => {setPage(newPage);};
   const handleChangeRowsPerPage = (event) => {setRows(event.target.value);setPage(0);};
 
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
-  const handleClick = (event) => {setAnchorEl(event.currentTarget);};
+  const handleClick = (event,id) => {setAnchorEl(event.currentTarget);setIsUSer(id)};
   const handleClose = () => {setAnchorEl(null);};
 
   const handleChangeStatus = (e,id)=>{
@@ -61,7 +64,7 @@ console.log(id)
         <Checkbox  checked={user.isAccountActive} onChange={(e)=>handleChangeStatus(e,user)}/>
         </TableCell>
       <TableCell>
-        <Button size='small' onClick={handleClick} disableRipple endIcon={<ArrowDropDownIcon/>} sx={{bgcolor:"#42A5F5 ",borderRadius:"50px",width:"100%"}} variant="contained" color="primary" >
+        <Button size='small' onClick={(e,id)=>handleClick(e,user._id)} disableRipple endIcon={<ArrowDropDownIcon/>} sx={{bgcolor:"#42A5F5 ",borderRadius:"50px",width:"100%"}} variant="contained" color="primary" >
         Action
       </Button>
       </TableCell>
@@ -85,7 +88,7 @@ console.log(id)
 
      <Menu id="basic-menu" anchorEl={anchorEl} open={open} onClose={handleClose} MenuListProps={{'aria-labelledby': 'basic-button',}} >
         <MenuItem onClick={handleClose}>View in website</MenuItem>
-        <MenuItem onClick={handleClose}>Edit</MenuItem>
+        <MenuItem onClick={()=>navigate(`/admin/edituser/${isUser}`)}>Edit</MenuItem>
         <MenuItem onClick={handleClose}>Mark as pending</MenuItem>
         <MenuItem onClick={handleClose}>Mark as featured</MenuItem>
       </Menu>

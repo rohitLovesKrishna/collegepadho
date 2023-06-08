@@ -4,11 +4,11 @@ import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-import { TablePagination, Box,Button,Checkbox,FormControlLabel,Menu,MenuItem,Typography, TableFooter } from '@mui/material';
+import {TablePagination, Box,Button,Checkbox,FormControlLabel,Menu,MenuItem,Typography, TableFooter} from '@mui/material';
 import LensIcon from '@mui/icons-material/Lens';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import {useState} from 'react';
+import {useNavigate} from 'react-router-dom';
 
 
 export default function TableMain({rows,setRows,dummyData}) {
@@ -86,12 +86,11 @@ const handleEdit=()=>{
 
 
      <Menu id="basic-menu" anchorEl={anchorEl} open={open} onClose={handleClose} MenuListProps={{'aria-labelledby': 'basic-button',}} >
-        <MenuItem onClick={handleClose}>View in website</MenuItem>
+        <MenuItem onClick={()=>navigate(`/college/${actionOn}`)}>View in website</MenuItem>
         <MenuItem onClick={handleEdit}>Edit</MenuItem>
         <MenuItem onClick={handleClose}>Mark as pending</MenuItem>
         <MenuItem onClick={handleClose}>Mark as featured</MenuItem>
       </Menu>
     </>
-
   );
 }

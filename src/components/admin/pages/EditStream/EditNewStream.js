@@ -38,10 +38,10 @@ const EditNewStream = () => {
         // axios.post(`${BASE_URL}/api/stream`,formdata).then((res)=>{alert("successfull");console.log(res)}).catch((err)=>{console.log(err);alert("Unsuccessfull")})
       }
     const fetchStream =()=>{
-      axios.get(`${BASE_URL}/api/stream`).then((res)=>{setIsStream(res.data.response.filter((item)=>{return item._id === param.id}))})
+      axios.get(`${BASE_URL}/api/stream`).then((res)=>{setIsStream(res.data.response.filter((item)=>{return item._id === param.id}))}).catch9((err)=>{console.log(err)});
     }
     useEffect(()=>fetchStream(),[])
-    useEffect(()=>{if(isStream.length > 0){setDataToSend({stream:isStream[0].stream,parentStream:isStream[0].parentStream});setImageUrl(isStream[0].image);setValue(isStream[0].icon)}},[isStream])
+    useEffect(()=>{if(isStream.length > 0){setDataToSend({stream:isStream[0].stream,parentStream:isStream[0].parentStream});setValue(isStream[0].icon);setImageUrl(`${BASE_URL}${isStream[0].image}`)}},[isStream])
     if(isStream.length > 0){
      return (
           <>

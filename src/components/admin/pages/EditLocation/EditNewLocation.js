@@ -1,42 +1,41 @@
 import { Add, ArrowCircleRightOutlined } from '@mui/icons-material';
 import { Box, Button, CssBaseline,  FormControl, Grid,MenuItem, OutlinedInput, Paper, Select, TextField, Typography } from '@mui/material';
 import React, { useEffect, useState } from 'react';
-import thumbNail from '../../assets/thumbnail.png'
-import NavBarTop from '../Global/NavBarTop';
-import SidebarAdmin from '../Global/SisebarAdmin'
-import HeaderAdmin from '../Global/HeaderAdmin';
+import thumbNail from '../../../assets/thumbnail.png'
+import NavBarTop from '../../Global/NavBarTop';
+import SidebarAdmin from '../../Global/SisebarAdmin'
+import HeaderAdmin from '../../Global/HeaderAdmin';
 import axios from 'axios';
-import BASE_URL from '../../constant';
+import BASE_URL from '../../../constant';
+import { useParams } from 'react-router-dom';
+import Loader from '../../../Loader';
 
 const drawerWidth ='280px'
-const AddLocation = () => {
+const EditNewLocation = () => {
+    const param = useParams();
     const [data,setData] = useState([])
+    const [isLocation,setIsLocation] = useState([]);
     const [imageUrl, setImageUrl] = useState(thumbNail);
     const [selectedImage, setSelectedImage] = useState(null);
     const [locName, setLocName]=useState('')
-    const [countryName, setCountryName]=useState('')
-
-    useEffect(()=>{
-       
-    },[selectedImage])
-
-    const getApi =()=>{
-        axios.get(`${BASE_URL}/api/country`).then((res)=>{console.log(res);setData(res.data.response)}).catch((err)=>{console.log(err)})
+    const [countryName, setCountryName]=useState('');
+    const fetchLocation = ()=>{
+        axios.get(`${BASE_URL}/api/location`).then((res)=>{setIsLocation(res.data.response.filter((item)=>{return item._id === param.id}))}).catch((err)=>{console.log(err);});
     }
-
-    useEffect(()=>{
-            getApi()
-         },[])
+useEffect(()=>{fetchLocation()},[isLocation]);
+useEffect(()=>{if(isLocation.length > 0){setLocName(isLocation[0].locationName);setCountryName(isLocation[0].country);setImageUrl(`${BASE_URL}${isLocation[0].image}`)}},[isLocation])
+    const getApi =()=>{axios.get(`${BASE_URL}/api/country`).then((res)=>{setData(res.data.response)}).catch((err)=>{console.log(err)})}
+    useEffect(()=>{getApi()},[])
     const sendData =()=>{
-         const formdata=new FormData();
-         formdata.append('locationName',locName)
-         formdata.append('country',countryName)
-         formdata.append('myFile',selectedImage)
-         axios.post(`${BASE_URL}/api/location`,formdata).then((res)=>{alert("successfull");console.log(res)}).catch((err)=>{console.log(err);alert("Unsuccessfull")})
-        
+        //  const formdata=new FormData();
+        //  formdata.append('locationName',locName)
+        //  formdata.append('country',countryName)
+        //  formdata.append('myFile',selectedImage)
+        // axios.post(`${BASE_URL}/api/location`,formdata).then((res)=>{alert("successfull");console.log(res)}).catch((err)=>{console.log(err);alert("Unsuccessfull")})    
     }
-      
-    return (
+     
+    if(isLocation.length > 0){
+ return (
         <>
            <CssBaseline />
               {/* when screen size is small NavBar entry from top  */}
@@ -127,6 +126,10 @@ const AddLocation = () => {
 
         </>
     );
+    }
+   else{
+    return <Loader/>
+   }
 }
 
-export default AddLocation;
+export default EditNewLocation;

@@ -58,7 +58,7 @@ const [courseApi,setCourseApi] = useState([])
 useEffect(()=>{fetchCities()},[])
 const fetchStream = ()=>{axios.get(`${BASE_URL}/api/stream`).then((res)=>{setStreams(res.data.response)}).catch((err)=>{console.log(err);})}
 useEffect(()=>{fetchStream()},[])
-const fetchCollege=()=>{axios.get(`${BASE_URL}/api/college`).then((res)=>{setCardApi(res.data.responses)}).catch((err)=>{console.log(err);})}
+const fetchCollege=()=>{axios.get(`${BASE_URL}/api/college`).then((res)=>{setCardApi(res.data.responses.filter((data)=>{return data.location === param.location}))}).catch((err)=>{console.log(err);})}
 useEffect(()=>fetchCollege(),[])
 const fetchCourse=()=>{axios.get(`${BASE_URL}/api/course`).then((res)=>{setCourseApi(res.data.response)}).catch((err)=>{console.log(err);})}
 useEffect(()=>fetchCourse(),[])
@@ -155,7 +155,7 @@ useEffect(()=>{window.scrollTo(0,0);},[])
         </Grid>
         <Grid item container   xs={12} sm={12} md={8} lg={8} sx={{justifyContent:'center', alignItems:'flex-start',height:'fit-content' }}>
 
-          {cardApi.filter((data)=>{return data.location === param.location}).map((ele)=>{
+          {cardApi.map((ele)=>{
               return(
                  <Grid key={ele._id}  onClick={()=>navigate(`/college/${ele._id}`)} item id='rightBox' xs={12} sm={6}  md={4} lg={4} sx={{height:"420px",backgroundColor:'#feffed', boxShadow: '0px 0px 5px 0px rgba(181,132,16,1)', borderRadius:'7px', margin:'48px 20px 0px 20px' }}>
                   <Box  id='clgimg'>

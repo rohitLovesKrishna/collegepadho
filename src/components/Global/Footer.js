@@ -9,9 +9,9 @@ import { useNavigate } from 'react-router-dom'
 import { useState } from 'react';
 import ModalPage from './ModalPage';
 export default function Footer() {
-       const [open , setOpen] = useState(false);
-    const handleOpen = () =>setOpen(true);
-const navigate = useNavigate()
+const [open , setOpen] = useState(false);
+const handleOpen = () =>setOpen(true);
+const navigate = useNavigate();
 
 const design = {
   head:{width:"100%",bgcolor:"#ff9800",color:"white"},
@@ -27,10 +27,10 @@ const design = {
             </Grid>
             <Grid item container sx={design.lists}>
                <List sx={{justifyContent:"center",alignItems:"start",display:"flex",flexDirection:"column"}}>
-                           <ListItem  sx={{cursor:"pointer",display:"flex",justifyContent:"center"}} onClick={()=>navigate('/footerabout')}><Link sx={{color:'black'}}>About</Link></ListItem>
-                      <ListItem  sx={{cursor:"pointer",display:"flex",justifyContent:"center"}}  onClick={()=>navigate('/footertermsandcondition')}><Link sx={{color:'black'}}>Terms and conditions</Link></ListItem>
-                      <ListItem  sx={{cursor:"pointer",display:"flex",justifyContent:"center"}}  onClick={()=>navigate('/footerprivacy')}><Link sx={{color:'black'}}>Privacy policy</Link></ListItem>
-                      <ListItem  sx={{cursor:"pointer",display:"flex",justifyContent:"center"}}  onClick={()=>navigate('/footerfaq')}><Link sx={{color:'black'}}>Faq</Link></ListItem>
+                           <ListItem  sx={{cursor:"pointer",display:"flex",justifyContent:"center"}} onClick={()=>{window.scrollTo({top: 0,behavior:'smooth'});navigate('/footerabout')}}><Link sx={{color:'black'}}>About</Link></ListItem>
+                      <ListItem  sx={{cursor:"pointer",display:"flex",justifyContent:"center"}}  onClick={()=>{window.scrollTo({top: 0,behavior:'smooth'});navigate('/footertermsandcondition')}}><Link sx={{color:'black'}}>Terms and conditions</Link></ListItem>
+                      <ListItem  sx={{cursor:"pointer",display:"flex",justifyContent:"center"}}  onClick={()=>{window.scrollTo({top: 0,behavior:'smooth'});navigate('/footerprivacy')}}><Link sx={{color:'black'}}>Privacy policy</Link></ListItem>
+                      <ListItem  sx={{cursor:"pointer",display:"flex",justifyContent:"center"}}  onClick={()=>{window.scrollTo({top: 0,behavior:'smooth'});navigate('/footerfaq')}}><Link sx={{color:'black'}}>Faq</Link></ListItem>
                       <ListItem  sx={{cursor:"pointer",display:"flex",justifyContent:"center"}}><Link sx={{color:'black'}}>Pages</Link></ListItem>
             </List>
             </Grid>
@@ -82,20 +82,20 @@ const design = {
             </Grid>
        <Divider sx={{m:"20px",border:"2px solid #ff9800"}}/>
        <Box id="footerItem" sx={{height:"50px",display:"flex",justifyContent:"right",alignItems:"center"}}>
-        <Link id="terms" sx={{ cursor:"pointer",fontSize:"12px",ml:"20px",mr:"20px",textDecoration:"none",color:"#555"}}>About</Link>
+        <Link onClick={()=>{window.scrollTo({top: 0,behavior:'smooth'});navigate('/footerabout')}} id="terms" sx={{ cursor:"pointer",fontSize:"12px",ml:"20px",mr:"20px",textDecoration:"none",color:"#555"}}>About</Link>
         <Divider orientation='vertical' sx={{height:"20%"}}/>
-         <Link id="terms" sx={{cursor:"pointer",fontSize:"12px",ml:"20px",mr:"20px",textDecoration:"none",color:"#555"}}>Terms and conditions</Link>
+        <Link onClick={()=>{window.scrollTo({top: 0,behavior:'smooth'});navigate('/footertermsandcondition')}} id="terms" sx={{cursor:"pointer",fontSize:"12px",ml:"20px",mr:"20px",textDecoration:"none",color:"#555"}}>Terms and conditions</Link>
            <Divider orientation='vertical' sx={{height:"20%"}}/>
-          <Link id="terms" sx={{cursor:"pointer",fontSize:"12px",ml:"20px",mr:"20px",textDecoration:"none",color:"#555"}}>Privacy policy</Link>
+        <Link onClick={()=>{window.scrollTo({top: 0,behavior:'smooth'});navigate('/footerprivacy')}} id="terms" sx={{cursor:"pointer",fontSize:"12px",ml:"20px",mr:"20px",textDecoration:"none",color:"#555"}}>Privacy policy</Link>
             <Divider orientation='vertical' sx={{height:"20%"}}/>
-           <Link id="terms" sx={{cursor:"pointer",fontSize:"12px",ml:"20px",mr:"20px",textDecoration:"none",color:"#555"}}>Faq</Link>
+        <Link onClick={()=>{window.scrollTo({top: 0,behavior:'smooth'});navigate('/footerfaq')}} id="terms" sx={{cursor:"pointer",fontSize:"12px",ml:"20px",mr:"20px",textDecoration:"none",color:"#555"}}>Faq</Link>
              <Divider orientation='vertical' sx={{height:"20%"}}/>
-            <Link id="terms" sx={{cursor:"pointer",fontSize:"12px",ml:"20px",mr:"20px",textDecoration:"none",color:"#555"}}>College Padho</Link>
+        <Link onClick={()=>{window.scrollTo({top: 0,behavior:'smooth'});navigate('/')}} id="terms" sx={{cursor:"pointer",fontSize:"12px",ml:"20px",mr:"20px",textDecoration:"none",color:"#555"}}>College Padho</Link>
        </Box>
        <Box  sx={{cursor:"pointer",position:"fixed",bottom:"70px",left:"50px",height:"fit-content",width:"fit-content",borderRadius:"50px",display:'flex',alignItems:'center'}}>
             <img src={whats} alt='whatsapp' height="50px" width="50px"/>
             <span style={{color:'orange'}}>👈 Chat with Us!</span>
-           </Box>
+       </Box>
     </>
   )
 }
