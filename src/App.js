@@ -78,6 +78,7 @@ function App() {
           <Route exact path='/admin/login' element={<LogInPage />} />
           <Route exact path='/admin/register' element={<RegisterPage />} />
 
+
           {/* <Route element={<PrivateRoutes/>}> */}
           <Route exact path='/admin' element={<HomepageAdmin />} />
           <Route exact path='/admin/allcolleges' element={<Colleges />} />
