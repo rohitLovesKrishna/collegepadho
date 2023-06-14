@@ -12,7 +12,7 @@ import Loader from '../../Loader';
 
 const SelectComponent = (props)=>{return( <><Grid mb={2} item container sx={{ justifyContent: "center", alignItems: "center" }} spacing={2} ><Grid item><Typography mr="12px" fontSize="12px" color="#646c9a">{props.label}</Typography></Grid><Grid item lg={12} md={12} sm={12} xs={12}>  <FormControl sx={{ width: "100%" }}> <Select  displayEmpty  style={{fontSize:"10px"}} renderValue={(selected) => {if (selected.length === 0) {return <em>{props.placeholder}</em>;}return props.value}} value={props.value}  onChange={(e)=>{props.onChange(e,props.in)}} onClick={(event) => event.stopPropagation()} size="small" id="mylabel"  labelId="mylabel" sx={{ width: { lg: "100%", md: "100%" }, color: "black" }}>  <MenuItem sx={{ fontSize: "10px" }} disabled value=""> {props.label}</MenuItem>{props.listItems.map((item)=>{return (<MenuItem key={item} sx={{ fontSize: "10px" }} value={item}>{item}</MenuItem>)})}</Select></FormControl></Grid></Grid></>)}
 const drawerWidth = '280px'
-const headers = [{ label: "User id", key: "_id" },{ label: "Name", key: "name" },{ label: "Date", key: "createdAt" },{ label: "Email", key: "email" },{ label: "Phone", key: "mobile" },{ label: "City", key: "city" }, { label: "Course", key: "course" }];
+const headers = [{ label: "User id", key: "_id" },{ label: "Name", key: "name" },{ label: "Source", key: "source" },{ label: "Date", key: "createdAt" },{ label: "Email", key: "email" },{ label: "Phone", key: "mobile" },{ label: "City", key: "city" }, { label: "Course", key: "course" }];
 
 const Leadspage = () => {
 const [dateRange,setDateRange] = useState({from:"",to:""})
@@ -83,7 +83,7 @@ setDataToDownload(filteredData)
                      </Grid>
                      {data.length > 0 ?
                      <Grid item xs={12} container>
-                                                <Typography>Total Leads : {data.length}</Typography>
+                    <Typography>Total Leads : {data.length}</Typography>
                     <div className='unique'>
                         <TableContainer>
                             <Table>
