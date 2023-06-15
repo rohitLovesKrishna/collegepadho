@@ -323,7 +323,7 @@ const IndividualCollegeInfo = () => {
                   </Paper>
                 </Grid> : ""}
 
-                <Grid id="courseSection" item xs={12} md={12} lg={8}>
+                {data.collegeCourse.length > 0 ? <Grid id="courseSection" item xs={12} md={12} lg={8}>
                   <Paper sx={{ p: "10px", ml: "10px" }} elevation={3}>
                     <Typography variant="h6">
                       <b>Course details</b>
@@ -337,7 +337,8 @@ const IndividualCollegeInfo = () => {
                     })}
 
                   </Paper>
-                </Grid>
+                </Grid> : ""}
+
 
                 {data.collegeAmenities.length > 0 ? <Grid id={"amenitySection"} item xs={12} lg={8} ml="10px">
                   <AmenitiesSection data={data.collegeAmenities} />
