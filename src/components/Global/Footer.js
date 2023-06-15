@@ -20,7 +20,7 @@ export default function Footer() {
   return (
     <>
       <ModalPage open={open} setOpen={setOpen} />
-      <Grid container sx={{ justifyContent: "center", alignItems: "flex-start", width: '100%' }} spacing={2}>
+      <Grid container sx={{ justifyContent: "center", alignItems: "flex-start", width: '100%' }} spacing={0}>
         <Grid item container lg={3} md={3} sm={6} xs={12} sx={design.lists}>
           <Grid item sx={{ width: "100%" }}>
             <Typography variant='h6' textAlign="center" sx={design.head} ><b>Quick Links</b></Typography>
