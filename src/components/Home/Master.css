@@ -62,7 +62,7 @@ opacity: 0.8;
 }
 .slick-dots li button:before{
     font-size: 20px;
-    padding-top: 30px;
+    padding-top: 0px;
 }
 .slick-dots li{
     margin-right: 5px;
@@ -70,7 +70,7 @@ opacity: 0.8;
 }
 
 .slide{
-    transform: scale(0.3);
+    transform: scale(0.8);
     transition: transform 300ms;
     opacity:0.9;
 }

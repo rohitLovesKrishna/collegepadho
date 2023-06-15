@@ -54,7 +54,7 @@ const FeaturedColleges = () => {
                           id="imageBoxFeaturedClg"
                           sx={{ boxSizing: 'border-box', aspectRatio: '9/7' }}
                           image={`${BASE_URL}` + item.image} title="pic" />
-                        <Typography id="readmoretext" fontWeight="700" fontSize="10px" sx={{ borderRadius: "50px", p: "2px 8px", bgcolor: "white", color: "black", position: "absolute", top: 125, zIndex: 99, left: 135, textTransform: "unset" }}>Reade more</Typography>
+                        <Typography id="readmoretext" fontWeight="700" fontSize="10px" sx={{ whiteSpace: "nowrap", borderRadius: "50px", p: "2px 8px", bgcolor: "white", color: "black", position: "absolute", top: 125, zIndex: 99, left: 135, textTransform: "unset" }}>Reade more</Typography>
                         <Typography fontWeight="700" fontSize="10px" sx={{ p: "2px 8px", bgcolor: "rgba(0,0,0,.6);", color: "white", position: "absolute", top: 35, zIndex: 99, left: 15 }}>COLLEGE</Typography>
                         <CardContent sx={{ display: "flex", flexDirection: "column", justifyContent: "space-between", height: "200px" }}>
                           <Typography variant='h1' sx={{ color: '#1565c0', m: '0px 0px 5px 0px', fontSize: "14px" }}><b>{item.collegeName}</b></Typography>
