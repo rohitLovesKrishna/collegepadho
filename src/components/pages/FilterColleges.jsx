@@ -58,7 +58,7 @@ const FilterColleges = () => {
   const [amenitiesData, setAmenitiesData] = useState([]);
   const [cardApi, setCardApi] = useState([]);
   const [courseApi, setCourseApi] = useState([]);
-  const fetchCities = () => { axios.get(`${BASE_URL}/api/location`).then((res) => { setCities(res.data.response) }).catch((err) => { console.log(err); }) }
+  const fetchCities = () => { axios.get(`${BASE_URL}/api/location`).then((res) => { setCities([...new Set(res.data.response.map((city) => { return city.locationName }))]) }).catch((err) => { console.log(err); }) }
   useEffect(() => { fetchCities() }, [])
   const fetchStream = () => { axios.get(`${BASE_URL}/api/stream`).then((res) => { setStreams(res.data.response) }).catch((err) => { console.log(err); }) }
   useEffect(() => { fetchStream() }, [])
@@ -95,7 +95,7 @@ const FilterColleges = () => {
     }))
   }, [selectedValues])
 
-  console.log(selectedValues)
+
   useEffect(() => { window.scrollTo(0, 0); }, [])
   return (
     <>
@@ -141,7 +141,7 @@ const FilterColleges = () => {
                 <FormGroup >
                   {/* {startIcon = { icons[index]}} */}
                   {amenitiesData.map((item, index) => {
-                    return <FormControlLabel key={item._id} control={<Checkbox checked={selectedValuesAmenity.includes(item.amenity)} onChange={handleCheckbox2} value={item.amenity} />} label={<Button size='small' sx={{ color: '#212121', textTransform: "unset", alignItems: "flex-start", display: "flex", justifyContent: "left" }} >{item.amenity}</Button>} />
+                    return <FormControlLabel key={item._id} control={<Checkbox checked={selectedValuesAmenity.includes(item.amenity)} onChange={handleCheckbox2} value={item.amenity} />} label={<Button size='small' sx={{ color: '#212121', textTransform: "unset", alignItems: "flex-start", display: "flex", justifyContent: "left", fontSize: "10px" }} >{item.amenity}</Button>} />
                   })}
                 </FormGroup>
               </Box>
@@ -156,9 +156,9 @@ const FilterColleges = () => {
 
               <Box>
                 <RadioGroup value={rad} onChange={(e) => setRad(e.target.value)}>
-                  <FormControlLabel control={<Radio />} value={"All"} label="All" />
+                  <FormControlLabel control={<Radio onClick={() => { setCardApi(originalData) }} />} value={"All"} label={<Typography sx={{ fontSize: "12px" }}>All</Typography>} />
                   {citiesData.map((item) => {
-                    return <FormControlLabel key={item._id} value={item.locationName} control={<Radio />} label={item.locationName} />
+                    return <FormControlLabel key={item} value={item} control={<Radio onClick={() => { setCardApi(originalData.filter((ele) => { return ele.location === item })) }} />} label={<Typography sx={{ fontSize: "12px" }}>{item}</Typography>} />
                   })}
 
                 </RadioGroup>

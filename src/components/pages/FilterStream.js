@@ -45,27 +45,26 @@ const FilterStream = () => {
   const param = useParams();
   const [rad, setRad] = useState("All")
   const handleOpen = () => setOpen(true);
-  const [catFil, setCatFil] = useState([])
   const [open, setOpen] = useState(false);
   const [amenitiesData, setAmenitiesData] = useState([]);
+  const [originalData, setOriginalData] = useState([]);
   const navigate = useNavigate()
   const [citiesData, setCities] = useState([]);
   const [streamsData, setStreams] = useState([]);
   const [cardApi, setCardApi] = useState([])
   const [courseApi, setCourseApi] = useState([])
   const [filter, setFilter] = useState(false)
-  const fetchCities = () => { axios.get(`${BASE_URL}/api/location`).then((res) => { setCities(res.data.response) }).catch((err) => { console.log(err); }) }
+  const fetchCities = () => { axios.get(`${BASE_URL}/api/location`).then((res) => { setCities([...new Set(res.data.response.map((city) => { return city.locationName }))]) }).catch((err) => { console.log(err); }) }
   useEffect(() => { fetchCities() }, [])
   const fetchStream = () => { axios.get(`${BASE_URL}/api/stream`).then((res) => { setStreams(res.data.response) }).catch((err) => { console.log(err); }) }
   useEffect(() => { fetchStream() }, [])
-  const fetchCollege = () => { axios.get(`${BASE_URL}/api/college`).then((res) => { setCardApi(res.data.responses.filter((item) => { return item.stream.indexOf(param.stream) !== -1 })) }).catch((err) => { console.log(err); }) }
+  const fetchCollege = () => { axios.get(`${BASE_URL}/api/college`).then((res) => { setCardApi(res.data.responses.filter((item) => { return item.stream.indexOf(param.stream) !== -1 })); setOriginalData(res.data.responses.filter((item) => { return item.stream.indexOf(param.stream) !== -1 })) }).catch((err) => { console.log(err); }) }
   useEffect(() => fetchCollege(), [])
   const fetchCourse = () => { axios.get(`${BASE_URL}/api/course`).then((res) => { setCourseApi(res.data.response) }).catch((err) => { console.log(err); }) }
   useEffect(() => fetchCourse(), [])
   const fetchAmenities = () => { axios.get(`${BASE_URL}/api/amenity`).then((res) => { setAmenitiesData(res.data.response) }).catch((err) => { console.log(err); }) }
   useEffect(() => { fetchAmenities() }, [])
   useEffect(() => { window.scrollTo(0, 0); }, [])
-
   return (
     <>
       <ModalPage open={open} setOpen={setOpen} />
@@ -92,7 +91,7 @@ const FilterStream = () => {
               <Box >
                 <FormGroup>
                   {streamsData.map((item, index) => {
-                    return <FormControlLabel key={item._id} control={<Checkbox />} label={<Button size='small' sx={{ color: '#212121', textTransform: "unset" }} startIcon={cat[index]} >{item.parentStream}</Button>} />
+                    return <FormControlLabel disabled={item.parentStream === param.stream ? false : true} key={item._id} control={<Checkbox checked={item.parentStream === param.stream ? true : false} />} label={<Button size='small' sx={{ color: '#212121', textTransform: "unset", fontSize: "12px" }} disabled={item.parentStream === param.stream ? false : true} startIcon={cat[index]} >{item.parentStream}</Button>} />
                   })}
                 </FormGroup>
               </Box>
@@ -108,7 +107,7 @@ const FilterStream = () => {
               <Box >
                 <FormGroup>
                   {amenitiesData.map((item, index) => {
-                    return <FormControlLabel key={item._id} control={<Checkbox />} label={<Button size='small' sx={{ color: '#212121', textTransform: "unset" }} startIcon={icons[index]}>{item.amenity}</Button>} />
+                    return <FormControlLabel key={item._id} control={<Checkbox />} label={<Button size='small' sx={{ color: '#212121', textTransform: "unset", fontSize: "12px" }} startIcon={icons[index]}>{item.amenity}</Button>} />
                   })}
                 </FormGroup>
               </Box>
@@ -123,9 +122,9 @@ const FilterStream = () => {
 
               <Box>
                 <RadioGroup value={rad} onChange={(e) => setRad(e.target.value)}>
-                  <FormControlLabel control={<Radio />} value={"All"} label="All" />
+                  <FormControlLabel control={<Radio onClick={() => { setCardApi(originalData) }} />} value={"All"} label={<Typography sx={{ fontSize: "12px" }}>All</Typography>} />
                   {citiesData.map((item) => {
-                    return <FormControlLabel key={item._id} value={item.locationName} control={<Radio />} label={item.locationName} />
+                    return <FormControlLabel key={item} value={item} control={<Radio onClick={() => { setCardApi(originalData.filter((ele) => { return ele.location === item })) }} />} label={<Typography sx={{ fontSize: "12px" }}>{item}</Typography>} />
                   })}
 
                 </RadioGroup>
@@ -173,7 +172,7 @@ const FilterStream = () => {
                         <Grid item key={course + index} sx={{ m: "4px", width: "fit-content", border: '1px solid #388e3c', padding: '1px 5px 1px 5px', whiteSpace: "wrap" }}>
                           <Typography sx={{ color: '#388e3c', fontSize: '13px' }}>{course.courseName}</Typography>
                         </Grid>)
-                    })}
+                    }).slice(0, 2)}
                   </Grid>
 
                 </Box>
