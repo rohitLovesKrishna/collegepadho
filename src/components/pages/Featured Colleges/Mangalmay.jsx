@@ -31,11 +31,11 @@ const IndividualCollegeInfo = () => {
   const [isVisible, setIsVisible] = useState(false);
   const eleref = useRef(null)
   const handleOpen = () => setOpen(true);
-  useEffect(() => {
-    setTimeout(() => {
-      handleOpen()
-    }, 3000)
-  }, [])
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     handleOpen()
+  //   }, 3000)
+  // }, [])
   const param = useParams()
   const navBars = { info: false, course: false, amenities: false, placement: false, gallery: false, video: false, contact: false, reviews: false }
   const [tabBars, setTabBars] = useState({ info: true, course: false, amenities: false, placement: false, gallery: false, video: false, contact: false, reviews: false })

@@ -26,6 +26,7 @@ import SportsRugbyIcon from '@mui/icons-material/SportsRugby';
 import DirectionsBusFilledIcon from '@mui/icons-material/DirectionsBusFilled';
 import CoffeeIcon from '@mui/icons-material/Coffee';
 import Radio from '@mui/material/Radio';
+import Skel from '../Global/Skel'
 import React, { useState } from 'react'
 import tag from '../assets/tag.jpg'
 import './FilterColleges.css';
@@ -49,6 +50,7 @@ const LocationStream = () => {
   const [amenitiesData, setAmenitiesData] = useState([]);
   const navigate = useNavigate();
   const [citiesData, setCities] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [originalData, setOriginalData] = useState([]);
   const [selectedValues, setSelectedValues] = useState([]);
   const [streamsData, setStreams] = useState([]);
@@ -202,7 +204,7 @@ const LocationStream = () => {
                   </Box>
                 </Box></Grid>)
           })
-            : <Typography sx={{ marginTop: "200px" }}>Sorry no data found!!</Typography>}
+            : loading ? <Skel /> : <Typography sx={{ marginTop: "200px" }}>Sorry no data found!!</Typography>}
         </Grid >
 
       </Grid>

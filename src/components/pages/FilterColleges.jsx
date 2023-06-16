@@ -4,6 +4,7 @@ import college from '../assets/college.jpg';
 import Checkbox from '@mui/material/Checkbox';
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
+import Skel from '../Global/Skel'
 // import ApartmentIcon from '@mui/icons-material/Apartment';
 // import EngineeringIcon from '@mui/icons-material/Engineering';
 // import MedicationIcon from '@mui/icons-material/Medication';
@@ -45,9 +46,10 @@ import ModalPage from '../Global/ModalPage';
 
 const FilterColleges = () => {
   const [open, setOpen] = useState(false);
-  const [rad, setRad] = useState("All")
+  const [rad, setRad] = useState("All");
+  const [loading, setLoading] = useState(true);
   const handleOpen = () => setOpen(true);
-  useEffect(() => { setTimeout(() => { handleOpen() }, 3000) }, [])
+  // useEffect(() => { setTimeout(() => { handleOpen() }, 3000) }, [])
   const navigate = useNavigate()
   const [filter, setFilter] = useState(false);
   const [citiesData, setCities] = useState([]);
@@ -62,7 +64,7 @@ const FilterColleges = () => {
   useEffect(() => { fetchCities() }, [])
   const fetchStream = () => { axios.get(`${BASE_URL}/api/stream`).then((res) => { setStreams(res.data.response) }).catch((err) => { console.log(err); }) }
   useEffect(() => { fetchStream() }, [])
-  const fetchCollege = () => { axios.get(`${BASE_URL}/api/college`).then((res) => { setCardApi(res.data.responses); setOriginalData(res.data.responses) }).catch((err) => { console.log(err); }) }
+  const fetchCollege = () => { axios.get(`${BASE_URL}/api/college`).then((res) => { setCardApi(res.data.responses); setOriginalData(res.data.responses); setLoading(false) }).catch((err) => { console.log(err); }) }
   useEffect(() => fetchCollege(), [])
   const fetchCourse = () => { axios.get(`${BASE_URL}/api/course`).then((res) => { setCourseApi(res.data.response) }).catch((err) => { console.log(err); }) }
   useEffect(() => fetchCourse(), [])
@@ -97,6 +99,8 @@ const FilterColleges = () => {
 
 
   useEffect(() => { window.scrollTo(0, 0); }, [])
+
+
   return (
     <>
       <ModalPage open={open} setOpen={setOpen} />
@@ -187,6 +191,7 @@ const FilterColleges = () => {
           </Box>
 
         </Grid>
+
         <Grid item container xs={12} sm={12} md={8} lg={8} sx={{ justifyContent: 'center', alignItems: 'flex-start', height: 'fit-content' }}>
           {cardApi.length > 0 ? cardApi.map((ele) => {
             return (
@@ -223,7 +228,7 @@ const FilterColleges = () => {
                   </Box>
                 </Box></Grid>)
           })
-            : <Typography sx={{ marginTop: "200px" }}>Sorry no data found!!</Typography>}
+            : loading ? <Skel /> : <Typography sx={{ marginTop: "200px" }}>Sorry no data found!!</Typography>}
         </Grid >
 
       </Grid >

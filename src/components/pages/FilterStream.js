@@ -2,6 +2,7 @@ import { Box, Grid, Typography, Button, RadioGroup } from '@mui/material'
 import TuneRoundedIcon from '@mui/icons-material/TuneRounded';
 import college from '../assets/college.jpg';
 import Checkbox from '@mui/material/Checkbox';
+import Skel from '../Global/Skel'
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import ApartmentIcon from '@mui/icons-material/Apartment';
@@ -45,6 +46,7 @@ const FilterStream = () => {
   const param = useParams();
   const [rad, setRad] = useState("All")
   const handleOpen = () => setOpen(true);
+  const [loading, setLoading] = useState(true);
   const [open, setOpen] = useState(false);
   const [amenitiesData, setAmenitiesData] = useState([]);
   const [originalData, setOriginalData] = useState([]);
@@ -189,7 +191,7 @@ const FilterStream = () => {
                   </Box>
                 </Box></Grid>)
           })
-            : <Typography sx={{ marginTop: "200px" }}>Sorry no data found!!</Typography>}
+            : loading ? <Skel /> : <Typography sx={{ marginTop: "200px" }}>Sorry no data found!!</Typography>}
         </Grid >
 
       </Grid>

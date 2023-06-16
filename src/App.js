@@ -55,6 +55,7 @@ import EditNewAmenity from "./components/admin/pages/EditAmenities/EditNewAmenit
 import EditNewBlog from "./components/admin/pages/EditBlog/EditNewBlog";
 import EditNewLocation from "./components/admin/pages/EditLocation/EditNewLocation";
 import EditNewUser from "./components/admin/pages/EditUser/EditNewUser";
+import SearchColleges from "./components/pages/CollegeSearch";
 function App() {
   return (
     <>
@@ -67,6 +68,7 @@ function App() {
           <Route exact path='/listings' element={<FilterColleges />} />
           <Route exact path='/filterStreams/:stream' element={<FilterStream />} />
           <Route exact path='/filterlocation/:location' element={<LocationStream />} />
+          <Route exact path='/collegeSearched/:collegeName' element={<SearchColleges />} />
           <Route exact path='/posts' element={<BlogPage />} />
           <Route exact path='/footerabout' element={<About />} />
           <Route exact path='/footerfaq' element={<Faq />} />

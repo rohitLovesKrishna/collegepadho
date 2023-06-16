@@ -21,11 +21,11 @@ import ModalPage from '../Global/ModalPage';
 const BlogPage = () => {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
-  useEffect(() => {
-    setTimeout(() => {
-      handleOpen()
-    }, 3000)
-  }, [])
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     handleOpen()
+  //   }, 3000)
+  // }, [])
   const navigate = useNavigate()
   const [blogApi, setBlogApi] = useState([])
   const [box, setBox] = useState(false)
