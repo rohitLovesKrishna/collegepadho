@@ -1,5 +1,5 @@
 import { Box, Grid, Typography, Container, Button, Paper, Divider } from "@mui/material";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import ExploreIcon from "@mui/icons-material/Explore";
 import HomeIcon from "@mui/icons-material/Home";
 import collegePadho from "../../assets/collegePadho.jpg";
@@ -28,6 +28,8 @@ import ModalPage from "../../Global/ModalPage";
 
 const IndividualCollegeInfo = () => {
   const [open, setOpen] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
+  const eleref = useRef(null)
   const handleOpen = () => setOpen(true);
   useEffect(() => {
     setTimeout(() => {
@@ -43,6 +45,22 @@ const IndividualCollegeInfo = () => {
   const collegeInfo = () => {
     axios.get(`${BASE_URL}/api/collegeinfo/${id}`).then((res) => { setCollege([res.data.response]); }).catch((err) => { console.log(err); })
   }
+  useEffect(() => {
+    const ref = eleref.current;
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => setIsVisible(entry.isIntersecting));
+    });
+    if (ref) {
+      observer.observe(ref);
+
+    }
+    return () => {
+      if (ref) {
+        observer.unobserve(ref);
+
+      }
+    }
+  }, [eleref])
   useEffect(collegeInfo, [id])
   const [data] = collegeData
   if (collegeData.length > 0) {
@@ -218,6 +236,7 @@ const IndividualCollegeInfo = () => {
                   </Paper>
                 </Grid>
                 <Grid
+                  style={{ display: !isVisible ? 'block' : 'none' }}
                   item
                   xs={3.5}
                   height="fit-content"
@@ -230,16 +249,14 @@ const IndividualCollegeInfo = () => {
                     <Button onClick={handleOpen}
                       variant="contained"
                       sx={{ bgcolor: "#004dda", m: "5px", p: "12px", color: "white" }}
-                      fullWidth
-                    >
+                      fullWidth>
                       <SchoolIcon />
                       Apply Now
                     </Button>
                     <Button onClick={handleOpen}
                       variant="contained"
                       sx={{ bgcolor: " #663399", m: "5px", p: "12px", color: "white" }}
-                      fullWidth
-                    >
+                      fullWidth>
                       <SendIcon />
                       Free Counselling
                     </Button>
@@ -261,6 +278,7 @@ const IndividualCollegeInfo = () => {
                     </Typography>
                   </Paper>
                   <Box
+
                     sx={{
                       display: "flex",
                       justifyContent: "space-around",
@@ -270,6 +288,7 @@ const IndividualCollegeInfo = () => {
                     }}
                   >
                     <Button
+
                       variant="outlined"
                       sx={{
                         color: "#303f9f",
@@ -367,8 +386,9 @@ const IndividualCollegeInfo = () => {
                   <TenthPaper />
                 </Grid>
 
+
                 <Grid item xs={12} sx={{ display: "flex", justifyContent: "center", alignItems: "center", mt: "35px", }} >
-                  <Box height="85%" width="65%" mt="10px">
+                  <Box ref={eleref} height="85%" width="65%" mt="10px">
                     <img alt="pic" src={mba} width="100%" height="100%" />
                   </Box>
                 </Grid>
