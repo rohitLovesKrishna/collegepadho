@@ -9,7 +9,9 @@ import axios from 'axios'
 import BASE_URL from '../constant'
 import { useEffect, useState } from 'react'
 import ModalPage from '../Global/ModalPage'
+import { useNavigate } from 'react-router-dom'
 const Stream = () => {
+  const navigate = useNavigate();
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   // useEffect(()=>{
@@ -48,7 +50,7 @@ const Stream = () => {
 
         {stream.map((item) => {
           return (<Grid key={item._id} item lg={4} xs={12} md={6}>
-            <Box sx={{ p: "20px", bgcolor: "#3f4277", borderRadius: "5px", textAlign: "center", color: "#fff" }}>
+            <Box onClick={() => { navigate(`/filterStreams/${item.stream}`) }} sx={{ cursor: "pointer", p: "20px", bgcolor: "#3f4277", borderRadius: "5px", textAlign: "center", color: "#fff" }}>
               <Typography fontSize="20px" fontWeight={700} sx={{ transition: "all .3s ease-in-out" }}>{item.stream} ({courseLength.filter((ele) => { return ele.stream === item.stream }).length}) </Typography>
             </Box>
           </Grid>
