@@ -34,7 +34,7 @@ const FeaturedColleges = () => {
     return (
       <>
         <Container disableGutters maxWidth="xl">
-          {cardApi.length > 3 ? <Box sx={{ bgcolor: " #EAEAEA;", pt: "50px", pb: "10px" }}>
+          {cardApi.length >= 3 ? <Box sx={{ bgcolor: " #EAEAEA;", pt: "50px", pb: "10px" }}>
             <Box sx={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
               <BarLine />
             </Box>
