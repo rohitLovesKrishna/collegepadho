@@ -21,6 +21,7 @@ import ModalPage from '../Global/ModalPage';
 const BlogPage = () => {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
+  const [streamsData, setStreams] = useState([]);
   // useEffect(() => {
   //   setTimeout(() => {
   //     handleOpen()
@@ -29,11 +30,13 @@ const BlogPage = () => {
   const navigate = useNavigate()
   const [blogApi, setBlogApi] = useState([])
   const [box, setBox] = useState(false)
+  const fetchStream = () => { axios.get(`${BASE_URL}/api/stream`).then((res) => { setStreams(res.data.response) }).catch((err) => { console.log(err); }) }
+  useEffect(() => { fetchStream() }, [])
   const boxHandler = () => {
     setBox(prev => { return !prev });
   }
   const getApi = () => {
-    axios.get(`${BASE_URL}/api/blog`).then((res) => { console.log(res); setBlogApi(res.data.response) }).catch((err) => { console.log(err) })
+    axios.get(`${BASE_URL}/api/blog`).then((res) => { setBlogApi(res.data.response) }).catch((err) => { console.log(err) })
   }
   useEffect(() => {
     getApi();
@@ -106,16 +109,21 @@ const BlogPage = () => {
               <Typography fontWeight={600} variant='body1' sx={{ mt: '25px', color: '#757575' }}>Latest post</Typography>
               <hr></hr>
 
-              {blogApi.slice(0, 4).map((item) => {
-                return (<Box key={item._id} sx={{ display: 'flex', alignItems: 'center', mt: '15px', }}>
-                  <Box id='rightFirstImg' sx={{ width: '125px', height: '100px', mr: '10px' }}>
-                    <img src={`${BASE_URL}` + item.image} width='100px' height='100px' />
+
+              {blogApi.slice(0, 4).map((item, index) => {
+                return (
+                  <Box sx={{ display: 'flex', alignItems: 'center', mt: '15px', }}>
+                    <Box id='rightFirstImg' sx={{ width: '125px', height: '100px', mr: '10px' }}>
+                      <img width="100px" height="100px" src={`${BASE_URL}` + item.image} />
+                    </Box>
+                    <Box>
+                      <Box sx={{ display: "flex", color: 'gray', alignItems: "center", justifyContent: "left" }}>
+                        <Typography font-weight={600} variant='body1' sx={{ mr: "8px", fontSize: "13px", color: "#999" }}><b>{item.stream}</b></Typography>
+                        <Typography sx={{ fontSize: "13px", color: "#999" }}><b> - {item.createdAt.slice(0, 10)}</b></Typography>
+                      </Box>
+                      <Typography variant='body' sx={{ color: 'black', padding: '0px 0px 30px 0px', fontSize: "12px" }}>{item.shortDescription.slice(0, 70)} <span style={{ color: "blue", fontSize: "10px", cursor: "pointer" }}>...Read more</span></Typography>
+                    </Box>
                   </Box>
-                  <Box>
-                    <Typography variant='subtitle2' sx={{ color: '#9e9e9e', }}>{item.title}</Typography>
-                    <Typography variant='subtitle' fontWeight='500' sx={{ color: 'gray' }}>{item.shortDescription.slice(0, 50) + '....'}</Typography>
-                  </Box>
-                </Box>
                 )
               })}
 
@@ -125,40 +133,14 @@ const BlogPage = () => {
               </Box>
 
               <hr></hr>
-              <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', color: '#757575' }}>
-                <Typography variant='body' fontWeight={600}>Management</Typography>
-                <Typography variant='body' fontWeight={600}>{`(51)`}</Typography>
-              </Box>
+              {streamsData.map((item, index) => {
+                return (<Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mt: '4px', color: '#757575' }}>
+                  <Typography variant='body' fontWeight={600}>{item.parentStream}</Typography>
+                  <Typography variant='body' fontWeight={600}>{`(1)`}</Typography>
+                </Box>)
 
-              <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mt: '4px', color: '#757575' }}>
-                <Typography variant='body' fontWeight={600}>Engineering</Typography>
-                <Typography variant='body' fontWeight={600}>{`(35)`}</Typography>
-              </Box>
+              })}
 
-              <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mt: '4px', color: '#757575' }}>
-                <Typography variant='body' fontWeight={600}>information technology</Typography>
-                <Typography variant='body' fontWeight={600}>{`(9)`}</Typography>
-              </Box>
-
-              <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mt: '4px', color: '#757575' }}>
-                <Typography variant='body' fontWeight={600}>Management</Typography>
-                <Typography variant='body' fontWeight={600}>{`(1)`}</Typography>
-              </Box>
-
-              <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mt: '4px', color: '#757575' }}>
-                <Typography variant='body' fontWeight={600}>commerce and banking</Typography>
-                <Typography variant='body' fontWeight={600}>{`(7)`}</Typography>
-              </Box>
-
-              <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mt: '4px', color: '#757575' }}>
-                <Typography variant='body' fontWeight={600}>Education</Typography>
-                <Typography variant='body' fontWeight={600}>{`(12)`}</Typography>
-              </Box>
-
-              <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mt: '4px', color: '#757575' }}>
-                <Typography variant='body' fontWeight={600}>Medical</Typography>
-                <Typography variant='body' fontWeight={600}>{`(1)`}</Typography>
-              </Box>
 
             </Grid>
 

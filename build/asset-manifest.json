@@ -1,16 +1,12 @@
 {
   "files": {
     "main.css": "/static/css/main.4b7aa834.css",
-    "main.js": "/static/js/main.fc34342f.js",
+    "main.js": "/static/js/main.38a0b981.js",
     "static/js/787.805726ff.chunk.js": "/static/js/787.805726ff.chunk.js",
     "static/media/noimage.gif": "/static/media/noimage.7552d12da73e253861ee.gif",
     "static/media/education_loadig2.gif": "/static/media/education_loadig2.f1b97e632a3ecd368c04.gif",
     "static/media/home_banner.jpg": "/static/media/home_banner.0fb6e5bba98e29c91b64.jpg",
     "static/media/BannerImage.jpg": "/static/media/BannerImage.814950c0994393b1c8e2.jpg",
-    "static/media/clg3.jpg": "/static/media/clg3.7fc0dca464cbbae6f296.jpg",
-    "static/media/clg5.jpg": "/static/media/clg5.c419377106af95693c14.jpg",
-    "static/media/clg2.jpg": "/static/media/clg2.b7421f03b88ddc9784c1.jpg",
-    "static/media/clg4.jpg": "/static/media/clg4.d47b7f2d0064a62dc6ed.jpg",
     "static/media/cartooncllg.jpg": "/static/media/cartooncllg.4bbca55d50dda3770854.jpg",
     "static/media/young-female-graduate-against-the-background-of-university-graduates-picture-id1151567114.jpeg": "/static/media/young-female-graduate-against-the-background-of-university-graduates-picture-id1151567114.a3d93c8530112daf1717.jpeg",
     "static/media/edu.jpg": "/static/media/edu.2c14ef0fdb3a76b91502.jpg",
@@ -32,11 +28,11 @@
     "static/media/faq.svg": "/static/media/faq.fbe64be977191cc106f9c64a96ede651.svg",
     "index.html": "/index.html",
     "main.4b7aa834.css.map": "/static/css/main.4b7aa834.css.map",
-    "main.fc34342f.js.map": "/static/js/main.fc34342f.js.map",
+    "main.38a0b981.js.map": "/static/js/main.38a0b981.js.map",
     "787.805726ff.chunk.js.map": "/static/js/787.805726ff.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.4b7aa834.css",
-    "static/js/main.fc34342f.js"
+    "static/js/main.38a0b981.js"
   ]
 }
