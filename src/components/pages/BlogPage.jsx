@@ -44,47 +44,48 @@ const BlogPage = () => {
         <ModalPage open={open} setOpen={setOpen} />
         <Header isBgColor={true} handleOpen={handleOpen} />
 
-        <Grid container sx={{ backgroundColor: '#f8f8f8', mb: "20px" }}>
+        <Grid container sx={{ backgroundColor: '#f8f8f8', mb: "20px" }} >
           <Grid item xs={12} sx={{ mt: "100px", display: 'flex', justifyContent: 'center', alignItems: 'center', backgroundColor: 'white' }}>
             <Box sx={{ width: '53.4%', mt: '5px' }}>
               <img src={college} style={{ cursor: 'pointer', width: '100%', height: '100%' }} />
             </Box>
           </Grid>
-          <Grid item container xs={12} sm={12} md={8.5} lg={8.5} sx={{ display: 'flex', justifyContent: 'space-around', alignItems: 'flex-start', mt: '30px' }}>
+          <Grid container xs={12} sm={12} md={8.5} lg={8.5} sx={{ display: 'flex', justifyContent: "center", alignItems: 'flex-start', mt: '30px' }}>
 
             {
               blogApi.map((ele) => {
                 return (
                   <>
-                    <Grid key={ele._id} onClick={() => navigate(`/home/posts/${ele._id}`)} item xs={10} sm={4.2} md={4.4} lg={4.5} sx={{ mb: "20px", backgroundColor: 'white', boxShadow: '0px 2px 9px 0px rgba(0,0,0,0.75)', borderRadius: '7px' }}>
+                    <Grid key={ele._id} mr={"30px"} onClick={() => navigate(`/home/posts/${ele._id}`)} item xs={10} sm={4.5} md={4.5} lg={4.5} sx={{ height: "440px", mb: "20px", backgroundColor: 'white', boxShadow: '0px 2px 9px 0px rgba(0,0,0,0.75)', borderRadius: '7px', display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
                       <Box id='clgimg'>
                         <img src={`${BASE_URL}` + ele.image} width='100%' height='200px' style={{ boxSizing: 'border-box', borderRadius: '7px' }} />
 
                       </Box>
-                      <Box sx={{ margin: 'auto', margin: '10px' }}>
-                        <Box sx={{ display: "flex", color: 'gray', alignItems: "center", justifyContent: "center" }}>
-                          <Typography variant='body1' sx={{ mr: "8px", fontSize: "15px" }}><b>{ele.stream}</b></Typography>
-                          <Typography sx={{ fontSize: "15px" }}><b>-{ele.createdAt.slice(0, 10)}</b></Typography>
+
+                      <Box sx={{ margin: '10px', display: "flex", flexDirection: "column", justifyContent: "space-between", height: "50%" }}>
+                        <Box sx={{ display: "flex", color: 'gray', alignItems: "center", justifyContent: "left" }}>
+                          <Typography font-weight={600} variant='body1' sx={{ mr: "8px", fontSize: "13px", color: "#999" }}><b>{ele.stream}</b></Typography>
+                          <Typography sx={{ fontSize: "13px", color: "#999" }}><b> - {ele.createdAt.slice(0, 10)}</b></Typography>
                         </Box>
-                        <Typography variant='h6' fontWeight={500}>{ele.title}</Typography>
-                        <Typography variant='body' sx={{ color: 'gray', padding: '0px 0px 30px 0px' }}>{ele.shortDescription.slice(0, 99) + '....Read More'}</Typography>
+                        <Box sx={{ height: "100%" }}>
+                          <Typography variant='h1' sx={{ cursor: "pointer", '&:hover': { color: " #004dda;" }, fontSize: "18px", fontWeight: 500 }} >{ele.title}</Typography>
+                          <Typography variant='body' sx={{ color: 'gray', padding: '0px 0px 30px 0px', fontSize: "12px" }}>{ele.shortDescription.slice(0, 200)} <span style={{ color: "blue", fontSize: "10px", cursor: "pointer" }}>...Read more</span></Typography>
+
+                        </Box>
                       </Box>
 
 
-                      <Box sx={{ width: '100%', backgroundColor: 'white', height: '50px', mt: '10px', display: 'flex', justifyContent: 'space-around', alignItems: 'center', borderTop: '1px solid gray' }}>
-                        <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                      <Box sx={{ width: '100%', backgroundColor: 'white', height: '50px', mt: '10px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderTop: '1px solid gray' }}>
+                        <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', ml: "10px" }}>
                           <PersonIcon size='small' sx={{ color: 'gray', mr: '8px' }} />
-                          <Typography sx={{ color: 'gray' }}>College Padho</Typography>
+                          <Typography sx={{ color: 'gray', fontSize: "10px" }}>College Padho</Typography>
                         </Box>
 
-                        <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', }}>
+                        <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', mr: "10px" }}>
 
-                          <ChatBubbleOutlineIcon size='small' sx={{ color: 'gray' }} />
-                          <Typography fontWeight={600} sx={{ color: 'gray', ml: '7px' }}>0</Typography>
+                          <ChatBubbleOutlineIcon size='small' sx={{ color: 'gray', fontSize: "18px" }} />
+                          <Typography fontWeight={600} sx={{ color: 'gray', ml: '7px', fontSize: "18px" }}>0</Typography>
                         </Box>
-
-
-
                       </Box>
 
                     </Grid>
