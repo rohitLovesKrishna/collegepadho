@@ -1,4 +1,4 @@
-import { Box, Button, Grid, Typography } from '@mui/material'
+import { Box, Button, Grid, Typography, Container } from '@mui/material'
 import BarLine from '../Global/BarLine'
 import '../Home/Master.css'
 import { useState, useEffect } from 'react'
@@ -23,7 +23,7 @@ const PopularStream = () => {
   useEffect(() => fetchStreams(), [])
 
   return (
-    <>
+    <Container disableGutters maxWidth={'lg'}>
 
       <Box sx={{ pt: "30px", mb: "45px", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", pl: "10px" }}>
         <BarLine />
@@ -68,7 +68,7 @@ const PopularStream = () => {
         </Box>
 
       </Box>
-    </>
+    </Container>
   )
 }
 

@@ -323,7 +323,7 @@ const IndividualCollegeInfo = () => {
                     </Button>
                   </Box>
                 </Grid>
-                {data.college.awards === true ? <Grid item xs={12} lg={8}>
+                {data.college.awards[0].trim().length > 0 ? <Grid item xs={12} lg={8}>
                   <Paper elevation={3} sx={{ p: "10px" }}>
                     <Typography variant="h6" ml="10px">
                       <b>Awards and recognitions</b>
@@ -332,7 +332,7 @@ const IndividualCollegeInfo = () => {
                       <ul>
                         {data.college.awards.map((item) => {
                           return (<li key={item}>
-                            <Typography variant="body1">
+                            <Typography sx={{ fontSize: "12px" }} variant="body1">
                               {item}
                             </Typography>
                           </li>)
