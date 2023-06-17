@@ -34,7 +34,7 @@ const FeaturedColleges = () => {
     return (
       <>
         <Container disableGutters maxWidth="xl">
-          {cardApi.length >= 3 ? <Box sx={{ bgcolor: " #EAEAEA;", pt: "50px", pb: "10px" }}>
+          {cardApi.length > 2 ? <Box sx={{ bgcolor: " #EAEAEA;", pt: "50px", pb: "10px" }}>
             <Box sx={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
               <BarLine />
             </Box>
@@ -65,8 +65,9 @@ const FeaturedColleges = () => {
                                 <Grid item key={course._id} sx={{ height: "fit-content", mr: "1px", width: "fit-content", border: '1px solid #388e3c', padding: '1px 5px 1px 5px', whiteSpace: "wrap" }}>
                                   <Typography sx={{ color: '#388e3c', fontSize: '10px' }}>{course.courseName}</Typography>
                                 </Grid>)
-                            })}
+                            }).slice(0, 3)}
                           </Grid>
+
 
                           <Box ml="0px" mt="10px" sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", height: "40px" }}>
                             <Button variant='contained' sx={{ fontSize: "6px", width: "20px", height: "20px", color: "white" }} size="small">Apply Now</Button>

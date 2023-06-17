@@ -29,7 +29,7 @@ import ModalPage from "../../Global/ModalPage";
 const IndividualCollegeInfo = () => {
   const [open, setOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
-  const eleref = useRef(null)
+  const eleref = useRef()
   const handleOpen = () => setOpen(true);
   // useEffect(() => {
   //   setTimeout(() => {
@@ -61,7 +61,7 @@ const IndividualCollegeInfo = () => {
       }
     }
   }, [eleref])
-  useEffect(collegeInfo, [id])
+  useEffect(() => { collegeInfo() }, [id])
   const [data] = collegeData
   if (collegeData.length > 0) {
     return (
@@ -236,14 +236,13 @@ const IndividualCollegeInfo = () => {
                   </Paper>
                 </Grid>
                 <Grid
-                  style={{ display: !isVisible ? 'block' : 'none' }}
                   item
                   xs={3.5}
                   height="fit-content"
                   sx={{
                     position: "sticky",
                     top: "100px",
-                    display: { xs: "none", sm: "none", md: "none", lg: "block" },
+                    display: { xs: isVisible ? 'none' : 'none', lg: !isVisible ? 'block' : 'none' }
                   }} >
                   <Paper elevation={1} sx={{ p: "10px", height: "100%" }}>
                     <Button onClick={handleOpen}
