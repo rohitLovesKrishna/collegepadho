@@ -17,11 +17,12 @@ const FeaturedColleges = () => {
   useEffect(() => fetchCollege(), [])
   const fetchCourse = () => { axios.get(`${BASE_URL}/api/course`).then((res) => { setCourseApi(res.data.response) }).catch((err) => { console.log(err); }) }
   useEffect(() => fetchCourse(), [])
-  const [imageIndex, setImageIndex] = useState(0)
+  const [imageIndex, setImageIndex] = useState(1)
   const settings = {
     infinite: true,
     arrows: false,
-    dots: true,
+    dots: cardApi.length > 4 ? true : false,
+    initialSlide: 1,
     lazyLoad: true,
     speed: 300,
     slidesToShow: 3,
