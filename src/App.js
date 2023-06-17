@@ -121,9 +121,7 @@ function App() {
             <Route exact path='/admin/leads' element={<Leadspage />} />
             <Route exact path='/admin/offlinepayment' element={<OfflinePayment />} />
           </Route>
-
         </Routes>
-
       </BrowserRouter>
 
 
