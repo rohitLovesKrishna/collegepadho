@@ -65,7 +65,7 @@ const SearchColleges = () => {
     useEffect(() => { fetchCities() }, [])
     const fetchStream = () => { axios.get(`${BASE_URL}/api/stream`).then((res) => { setStreams(res.data.response) }).catch((err) => { console.log(err); }) }
     useEffect(() => { fetchStream() }, [])
-    const fetchCollege = () => { axios.get(`${BASE_URL}/api/college`).then((res) => { setCardApi(res.data.responses.filter((item) => { return item.collegeName.toLowerCase().includes(param.collegeName) })); setOriginalData(res.data.responses.filter((item) => { return item.collegeName.toLowerCase().includes(param.collegeName) })); setLoading(false) }).catch((err) => { console.log(err); }) }
+    const fetchCollege = () => { axios.get(`${BASE_URL}/api/college`).then((res) => { setCardApi(res.data.responses.filter((item) => { return item.collegeName.toLowerCase().includes(param.collegeName.toLowerCase()) })); setOriginalData(res.data.responses.filter((item) => { return item.collegeName.toLowerCase().includes(param.collegeName) })); setLoading(false) }).catch((err) => { console.log(err); }) }
     useEffect(() => fetchCollege(), [])
     const fetchCourse = () => { axios.get(`${BASE_URL}/api/course`).then((res) => { setCourseApi(res.data.response) }).catch((err) => { console.log(err); }) }
     useEffect(() => fetchCourse(), [])
