@@ -64,8 +64,8 @@ export default function AllStream() {
   return (
     <div>
       <Button
-      size='large'
-      sx={{borderBottomLeftRadius:"0px",borderTopLeftRadius:"0px","&:hover":{bgcolor:"white"},p:"13px 2px",justifyContent:"space-between",width:"14rem",bgcolor:"white",color:" #6f787f;",fontSize:"10px" ,fontWeight:"700"}}
+        size='large'
+        sx={{ borderBottomLeftRadius: "0px", borderTopLeftRadius: "0px", "&:hover": { bgcolor: "white" }, p: "13px 2px", justifyContent: "space-between", width: "14rem", bgcolor: "white", color: " #6f787f;", fontSize: "10px", fontWeight: "700" }}
         id="demo-customized-button"
         aria-controls={open ? 'demo-customized-menu' : undefined}
         aria-haspopup="true"
@@ -86,13 +86,13 @@ export default function AllStream() {
         open={open}
         onClose={handleClose}
       >
-        <MenuItem sx={{color:" #6f787f;"}} onClick={handleClose} disableRipple>
+        <MenuItem sx={{ color: " #6f787f;" }} onClick={handleClose} disableRipple>
           Management
         </MenuItem>
-        <MenuItem  sx={{color:" #6f787f;"}}  onClick={handleClose} disableRipple>
+        <MenuItem sx={{ color: " #6f787f;" }} onClick={handleClose} disableRipple>
           Engineering
         </MenuItem>
-        <MenuItem  sx={{color:" #6f787f;"}}  onClick={handleClose} disableRipple>
+        <MenuItem sx={{ color: " #6f787f;" }} onClick={handleClose} disableRipple>
           Pharmacy
         </MenuItem>
       </StyledMenu>

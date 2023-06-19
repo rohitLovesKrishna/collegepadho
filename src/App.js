@@ -1,7 +1,6 @@
 import Homepage from "./components/Home/Homepage";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Stream from "./components/pages/Stream";
-import Pricing from './components/pages/Pricing'
 import Colleges from "./components/admin/pages/CollegetTabs/Colleges";
 import HomepageAdmin from "./components/admin/HomepageAdmin";
 import AddNewCollege from "./components/admin/pages/AddNewCollege";
@@ -62,7 +61,6 @@ function App() {
         <Routes>
           <Route exact path="/" element={<Homepage />} />
           <Route exact path="/stream" element={<Stream />} />
-          <Route exact path="/pricing" element={<Pricing />} />
           <Route exact path='/listings' element={<FilterColleges />} />
           <Route exact path='/filterStreams/:stream' element={<FilterStream />} />
           <Route exact path='/filterlocation/:location' element={<LocationStream />} />

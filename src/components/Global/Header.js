@@ -35,7 +35,6 @@ export default function Header({ isBgColor, handleOpen }) {
               <Link onClick={() => navigate('/')} id="navBarHide" sx={{ '&:hover': { opacity: 0.6 }, transition: "all 0.70s ease", color: "white", mr: "20px", cursor: "pointer", textDecoration: "none" }}>Home</Link>
               <Link onClick={() => navigate('/listings')} id="navBarHide" sx={{ '&:hover': { opacity: 0.6 }, transition: "all 0.70s ease", color: "white", mr: "20px", cursor: "pointer", textDecoration: "none" }}>Listings</Link>
               <Link onClick={() => navigate('/stream')} id="navBarHide" sx={{ '&:hover': { opacity: 0.6 }, transition: "all 0.70s ease", color: "white", mr: "20px", cursor: "pointer", textDecoration: "none" }}>Stream</Link>
-              <Link onClick={() => navigate('/pricing')} id="navBarHide" sx={{ '&:hover': { opacity: 0.6 }, transition: "all 0.70s ease", color: "white", mr: "20px", cursor: "pointer", textDecoration: "none" }}>Pricing</Link>
               <Link onClick={() => navigate('/posts')} id="navBarHide" sx={{ '&:hover': { opacity: 0.6 }, transition: "all 0.70s ease", color: "white", mr: "20px", cursor: "pointer", textDecoration: "none" }}>Blog</Link>
               <Link onClick={handleOpen} id="navBarHide" sx={{ '&:hover': { opacity: 0.6 }, transition: "all 0.70s ease", color: "yellow", mr: "20px", cursor: "pointer", textDecoration: "none" }}>Admission Enquiry</Link>
             </Box>
@@ -63,7 +62,6 @@ export default function Header({ isBgColor, handleOpen }) {
                 <Link onClick={() => navigate('/')} id="navBarHide" sx={{ '&:hover': { opacity: 0.6 }, transition: "all 0.70s ease", color: "white", mr: "20px", cursor: "pointer", textDecoration: "none" }}>Home</Link>
                 <Link onClick={() => navigate('/listings')} id="navBarHide" sx={{ '&:hover': { opacity: 0.6 }, transition: "all 0.70s ease", color: "white", mr: "20px", cursor: "pointer", textDecoration: "none" }}>Listings</Link>
                 <Link onClick={() => navigate('/stream')} id="navBarHide" sx={{ '&:hover': { opacity: 0.6 }, transition: "all 0.70s ease", color: "white", mr: "20px", cursor: "pointer", textDecoration: "none" }}>Stream</Link>
-                <Link onClick={() => navigate('/pricing')} id="navBarHide" sx={{ '&:hover': { opacity: 0.6 }, transition: "all 0.70s ease", color: "white", mr: "20px", cursor: "pointer", textDecoration: "none" }}>Pricing</Link>
                 <Link onClick={() => navigate('/posts')} id="navBarHide" sx={{ '&:hover': { opacity: 0.6 }, transition: "all 0.70s ease", color: "white", mr: "20px", cursor: "pointer", textDecoration: "none" }}>Blog</Link>
                 <Link onClick={handleOpen} id="navBarHide" sx={{ '&:hover': { opacity: 0.6 }, transition: "all 0.70s ease", color: "yellow", mr: "20px", cursor: "pointer", textDecoration: "none" }}>Admission Enquiry</Link>
               </Box>

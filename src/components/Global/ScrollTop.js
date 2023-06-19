@@ -5,8 +5,8 @@ import { useCallback } from "react"
 
 
 function ScrollToTopFab() {
-const trigger = useScrollTrigger({ threshold: 100,})
-const scrollToTop = useCallback(() => {window.scrollTo({ top: 0, behavior: "smooth" })}, [])
+  const trigger = useScrollTrigger({ threshold: 100, })
+  const scrollToTop = useCallback(() => { window.scrollTo({ top: 0, behavior: "smooth" }) }, [])
 
   return (
     <Zoom in={trigger}>

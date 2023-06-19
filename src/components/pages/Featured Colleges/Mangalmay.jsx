@@ -28,7 +28,6 @@ import ModalPage from "../../Global/ModalPage";
 
 const IndividualCollegeInfo = () => {
   const [open, setOpen] = useState(false);
-  const [isVisible, setIsVisible] = useState(false);
   const eleref = useRef()
   const handleOpen = () => setOpen(true);
   // useEffect(() => {
@@ -45,24 +44,10 @@ const IndividualCollegeInfo = () => {
   const collegeInfo = () => {
     axios.get(`${BASE_URL}/api/collegeinfo/${id}`).then((res) => { setCollege([res.data.response]); }).catch((err) => { console.log(err); })
   }
-  useEffect(() => {
-    const ref = eleref.current;
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => setIsVisible(entry.isIntersecting));
-    });
-    if (ref) {
-      observer.observe(ref);
-
-    }
-    return () => {
-      if (ref) {
-        observer.unobserve(ref);
-
-      }
-    }
-  }, [eleref])
   useEffect(() => { collegeInfo() }, [id])
+
   const [data] = collegeData
+
   if (collegeData.length > 0) {
     return (
       <>
@@ -152,10 +137,10 @@ const IndividualCollegeInfo = () => {
                 {data.collegePlacement.length > 0 ? <Typography sx={{ opacity: tabBars.placement ? 1 : '0.6', fontSize: "18px" }} onClick={() => { const element = document.getElementById('placementSection'); element.scrollIntoView({ behavior: 'smooth', block: 'center' }); const newFi = { ...navBars }; newFi.placement = true; setTabBars(newFi) }} mr="17px" fontSize="1.1rem">
                   Placement
                 </Typography> : ""}
-                {data.collegeGallery.length > 0 ? <Typography sx={{ opacity: tabBars.gallery ? 1 : '0.6', fontSize: "18px" }} onClick={() => { const element = document.getElementById('gallerySection'); element.scrollIntoView({ behavior: 'smooth', block: 'center' }); const newFi = { ...navBars }; newFi.gallery = true; setTabBars(newFi) }} mr="17px" fontSize="1.1rem">
+                {data.collegeGallery.length > 1 ? <Typography sx={{ opacity: tabBars.gallery ? 1 : '0.6', fontSize: "18px" }} onClick={() => { const element = document.getElementById('gallerySection'); element.scrollIntoView({ behavior: 'smooth', block: 'center' }); const newFi = { ...navBars }; newFi.gallery = true; setTabBars(newFi) }} mr="17px" fontSize="1.1rem">
                   Gallery
                 </Typography> : ""}
-                {data.collegeVideoURL !== null ? <Typography sx={{ opacity: tabBars.video ? 1 : '0.6', fontSize: "18px" }} onClick={() => { const element = document.getElementById('videoSection'); element.scrollIntoView({ behavior: 'smooth', block: 'center' }); const newFi = { ...navBars }; newFi.video = true; setTabBars(newFi) }} mr="17px" fontSize="1.1rem">
+                {data.collegeVideoURL.youTubeUrl.trim().length > 0 ? <Typography sx={{ opacity: tabBars.video ? 1 : '0.6', fontSize: "18px" }} onClick={() => { const element = document.getElementById('videoSection'); element.scrollIntoView({ behavior: 'smooth', block: 'center' }); const newFi = { ...navBars }; newFi.video = true; setTabBars(newFi) }} mr="17px" fontSize="1.1rem">
                   Video
                 </Typography> : ""}
                 {data.collegeContact !== null ? <Typography sx={{ opacity: tabBars.contact ? 1 : '0.6', fontSize: "18px" }} onClick={() => { const element = document.getElementById('contactSection'); element.scrollIntoView({ behavior: 'smooth', block: 'center' }); const newFi = { ...navBars }; newFi.contact = true; setTabBars(newFi) }} mr="17px" fontSize="1.1rem">
@@ -236,7 +221,7 @@ const IndividualCollegeInfo = () => {
                   </Paper>
                 </Grid>
 
-                {data.college.awards[0].trim().length > 0 ? <Grid item mb={"20px"}>
+                {data.college.awards[0].trim().length > 0 && data.college.awards[0] !== 'N/A' ? <Grid item mb={"20px"}>
                   <Paper elevation={3} sx={{ p: "10px" }} >
                     <Typography variant="h6" ml="10px">
                       <b>Awards and recognitions</b>
@@ -284,8 +269,8 @@ const IndividualCollegeInfo = () => {
                 <Grid id="gallerySection" item mb="20px" >
                   <PhotoGallery data={data.collegeGallery} />
                 </Grid>
-                {data.collegeVideoURL !== null && data.collegeVideoURL.length > 0 ? <Grid item mb="20px" id="videoSection" sx={{ height: "fit-content" }}>
-                  <iframe title="youtube" style={{ overflow: 'hidden' }} width="70%" height="345" src={data.collegeVideoURL === null && data.collegeVideoURL.length > 0 ? "" : data.collegeVideoURL.youTubeUrl}></iframe>
+                {data.collegeVideoURL.youTubeUrl.trim().length > 0 ? <Grid item mb="20px" id="videoSection" sx={{ height: "fit-content" }}>
+                  <iframe title="youtube" width="100%" height="345" src={data.collegeVideoURL.youTubeUrl}></iframe>
                 </Grid> : ""}
                 <Grid id="contactSection" mb={"20px"}>
                   <Contact data={data.collegeContact} />
@@ -305,7 +290,7 @@ const IndividualCollegeInfo = () => {
 
                   position: "sticky",
                   top: "100px",
-                  display: { xs: isVisible ? 'none' : 'none', lg: !isVisible ? 'block' : 'none', md: !isVisible ? 'block' : 'none' }
+                  display: { lg: 'block', md: 'block', xs: 'none' }
                 }} >
                 <Paper elevation={1} sx={{ p: "10px", height: "100%" }}>
                   <Button onClick={handleOpen}
