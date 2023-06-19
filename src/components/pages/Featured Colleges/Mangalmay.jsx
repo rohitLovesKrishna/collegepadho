@@ -270,7 +270,7 @@ const IndividualCollegeInfo = () => {
                   <PhotoGallery data={data.collegeGallery} />
                 </Grid>
                 {data.collegeVideoURL.youTubeUrl.trim().length > 0 ? <Grid item mb="20px" id="videoSection" sx={{ height: "fit-content" }}>
-                  <iframe title="youtube" width="100%" height="345" src={data.collegeVideoURL.youTubeUrl}></iframe>
+                  <iframe title="youtube" width="100%" height="345" src={`https://www.youtube.com/embed/${data.collegeVideoURL.youTubeUrl.split('=')[1]}`}></iframe>
                 </Grid> : ""}
                 <Grid id="contactSection" mb={"20px"}>
                   <Contact data={data.collegeContact} />
