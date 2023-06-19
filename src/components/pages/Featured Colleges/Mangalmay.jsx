@@ -188,10 +188,10 @@ const IndividualCollegeInfo = () => {
               </Box>
             </Grid>
 
-            <Grid item xs={12} >
-              <Grid container spacing={1}>
-                <Grid item xs={12} lg={8}>
-                  <Box mb="10px" ml="10px">
+            <Grid container xs={12} spacing={2} p="10px">
+              <Grid item xs={12} lg={8} md={8} mt="20px" >
+                <Grid item mb={"20px"} sx={{ height: "fit-content" }}>
+                  <Box mb="10px" ml="10px"  >
                     {data.college.stream.map((item) => {
                       return (<Button
                         key={item}
@@ -235,96 +235,9 @@ const IndividualCollegeInfo = () => {
                     </Button>
                   </Paper>
                 </Grid>
-                <Grid
-                  item
-                  xs={3.5}
-                  height="fit-content"
-                  sx={{
-                    position: "sticky",
-                    top: "100px",
-                    display: { xs: isVisible ? 'none' : 'none', lg: !isVisible ? 'block' : 'none' }
-                  }} >
-                  <Paper elevation={1} sx={{ p: "10px", height: "100%" }}>
-                    <Button onClick={handleOpen}
-                      variant="contained"
-                      sx={{ bgcolor: "#004dda", m: "5px", p: "12px", color: "white" }}
-                      fullWidth>
-                      <SchoolIcon />
-                      Apply Now
-                    </Button>
-                    <Button onClick={handleOpen}
-                      variant="contained"
-                      sx={{ bgcolor: " #663399", m: "5px", p: "12px", color: "white" }}
-                      fullWidth>
-                      <SendIcon />
-                      Free Counselling
-                    </Button>
-                    <Button
-                      variant="outlined"
-                      sx={{
-                        color: "black",
-                        borderColor: "black",
-                        m: "2px",
-                        p: "12px",
-                      }}
-                      fullWidth
-                    >
-                      <FavoriteIcon />
-                      <b>Add to Wishlist</b>
-                    </Button>
-                    <Typography align="center" fontSize="11px" m="2px">
-                      No money charged in this step
-                    </Typography>
-                  </Paper>
-                  <Box
 
-                    sx={{
-                      display: "flex",
-                      justifyContent: "space-around",
-                      mt: "30px",
-                      position: "sticky",
-                      top: "50px",
-                    }}
-                  >
-                    <Button
-
-                      variant="outlined"
-                      sx={{
-                        color: "#303f9f",
-                        borderRadius: "25px",
-                        borderColor: "#303f9f",
-                        fontSize: "13px",
-                      }} >
-                      <FacebookIcon />
-                      Share
-                    </Button>
-                    <Button
-                      variant="outlined"
-                      sx={{
-                        color: "#1da1f2",
-                        borderRadius: "25px",
-                        borderColor: "#1da1f2",
-                        fontSize: "13px",
-                      }}>
-                      <TwitterIcon />
-                      TWEET
-                    </Button>
-                    <Button
-                      variant="outlined"
-                      sx={{
-                        color: "#dd4b39",
-                        borderRadius: "25px",
-                        borderColor: "#dd4b39",
-                        fontSize: "13px",
-                      }}
-                    >
-                      <PinterestIcon />
-                      Pin
-                    </Button>
-                  </Box>
-                </Grid>
-                {data.college.awards[0].trim().length > 0 ? <Grid item xs={12} lg={8}>
-                  <Paper elevation={3} sx={{ p: "10px" }}>
+                {data.college.awards[0].trim().length > 0 ? <Grid item mb={"20px"}>
+                  <Paper elevation={3} sx={{ p: "10px" }} >
                     <Typography variant="h6" ml="10px">
                       <b>Awards and recognitions</b>
                     </Typography>
@@ -341,8 +254,8 @@ const IndividualCollegeInfo = () => {
                   </Paper>
                 </Grid> : ""}
 
-                {data.collegeCourse.length > 0 ? <Grid id="courseSection" item xs={12} md={12} lg={8}>
-                  <Paper sx={{ p: "10px", ml: "10px" }} elevation={3}>
+                {data.collegeCourse.length > 0 ? <Grid id="courseSection" item mb={"20px"}>
+                  <Paper sx={{ p: "10px" }} elevation={3}>
                     <Typography variant="h6">
                       <b>Course details</b>
                     </Typography>
@@ -358,40 +271,126 @@ const IndividualCollegeInfo = () => {
                 </Grid> : ""}
 
 
-                {data.collegeAmenities.length > 0 ? <Grid id={"amenitySection"} item xs={12} lg={8} ml="10px">
+                {data.collegeAmenities.length > 0 ? <Grid id={"amenitySection"} item mb={"20px"} >
                   <AmenitiesSection data={data.collegeAmenities} />
                 </Grid> : ""}
-                {data.collegePlacement.length > 0 ? <Grid id="placementSection" item xs={12} lg={8} ml="10px">
+                {data.collegePlacement.length > 0 ? <Grid id="placementSection" item mb={"20px"}>
                   <Placement data={data.collegePlacement} />
                 </Grid> : ""}
 
-                <Grid item xs={12} lg={8} ml="10px">
+                <Grid item mb={"20px"} >
                   <Recruiters data={data.collegeRecruitersImage} />
                 </Grid>
-                <Grid id="gallerySection" item xs={12} lg={8} ml="10px">
+                <Grid id="gallerySection" item mb="20px" >
                   <PhotoGallery data={data.collegeGallery} />
                 </Grid>
-                {data.collegeVideoURL !== null && data.collegeVideoURL.length > 0 ? <Grid item id="videoSection" xs={11} sx={{ height: "fit-content" }}>
+                {data.collegeVideoURL !== null && data.collegeVideoURL.length > 0 ? <Grid item mb="20px" id="videoSection" sx={{ height: "fit-content" }}>
                   <iframe title="youtube" style={{ overflow: 'hidden' }} width="70%" height="345" src={data.collegeVideoURL === null && data.collegeVideoURL.length > 0 ? "" : data.collegeVideoURL.youTubeUrl}></iframe>
                 </Grid> : ""}
-                <Grid id="contactSection" item xs={12} lg={8} ml="10px">
+                <Grid id="contactSection" mb={"20px"}>
                   <Contact data={data.collegeContact} />
                 </Grid>
 
-                <Grid item xs={12} lg={8} mt="-8px" ml="10px">
-                  <Paper sx={{ borderBottom: "3px solid #d2d8dd" }}></Paper>
-                </Grid>
-                <Grid id="reviewSection" item xs={12} lg={8} ml="10px">
+                <Grid id="reviewSection" item mb={"20px"} p="10px">
                   <TenthPaper />
                 </Grid>
 
-
-                <Grid item xs={12} sx={{ display: "flex", justifyContent: "center", alignItems: "center", mt: "35px", }} >
-                  <Box ref={eleref} height="85%" width="65%" mt="10px">
-                    <img alt="pic" src={mba} width="100%" height="100%" />
-                  </Box>
-                </Grid>
               </Grid>
+              <Grid
+                item
+                xs={4}
+                height="fit-content"
+                sx={{
+                  mt: "20px",
+
+                  position: "sticky",
+                  top: "100px",
+                  display: { xs: isVisible ? 'none' : 'none', lg: !isVisible ? 'block' : 'none', md: !isVisible ? 'block' : 'none' }
+                }} >
+                <Paper elevation={1} sx={{ p: "10px", height: "100%" }}>
+                  <Button onClick={handleOpen}
+                    variant="contained"
+                    sx={{ bgcolor: "#004dda", m: "5px", p: "12px", color: "white" }}
+                    fullWidth>
+                    <SchoolIcon />
+                    Apply Now
+                  </Button>
+                  <Button onClick={handleOpen}
+                    variant="contained"
+                    sx={{ bgcolor: " #663399", m: "5px", p: "12px", color: "white" }}
+                    fullWidth>
+                    <SendIcon />
+                    Free Counselling
+                  </Button>
+                  <Button
+                    variant="outlined"
+                    sx={{
+                      color: "black",
+                      borderColor: "black",
+                      m: "2px",
+                      p: "12px",
+                    }}
+                    fullWidth
+                  >
+                    <FavoriteIcon />
+                    <b>Add to Wishlist</b>
+                  </Button>
+                  <Typography align="center" fontSize="11px" m="2px">
+                    No money charged in this step
+                  </Typography>
+                </Paper>
+                <Box
+
+                  sx={{
+                    display: "flex",
+                    justifyContent: "space-around",
+                    mt: "30px",
+                    position: "sticky",
+                    top: "50px",
+                  }}
+                >
+                  <Button
+
+                    variant="outlined"
+                    sx={{
+                      color: "#303f9f",
+                      borderRadius: "25px",
+                      borderColor: "#303f9f",
+                      fontSize: "13px",
+                    }} >
+                    <FacebookIcon />
+                    Share
+                  </Button>
+                  <Button
+                    variant="outlined"
+                    sx={{
+                      color: "#1da1f2",
+                      borderRadius: "25px",
+                      borderColor: "#1da1f2",
+                      fontSize: "13px",
+                    }}>
+                    <TwitterIcon />
+                    TWEET
+                  </Button>
+                  <Button
+                    variant="outlined"
+                    sx={{
+                      color: "#dd4b39",
+                      borderRadius: "25px",
+                      borderColor: "#dd4b39",
+                      fontSize: "13px",
+                    }}
+                  >
+                    <PinterestIcon />
+                    Pin
+                  </Button>
+                </Box>
+              </Grid>
+            </Grid>
+            <Grid item xs={12} sx={{ display: "flex", justifyContent: "center", alignItems: "center", mt: "35px", }} >
+              <Box ref={eleref} height="85%" width="65%" mt="10px">
+                <img alt="pic" src={mba} width="100%" height="100%" />
+              </Box>
             </Grid>
           </Grid>
           <Footer />

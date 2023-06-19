@@ -25,8 +25,6 @@ import PageSidebarAdmin from "./components/admin/pages/PageSidebarAdmin";
 import Advertisement from "./components/admin/pages/Advertisment";
 import BlogPost from "./components/admin/pages/BlogPost";
 import AddNewPage from "./components/admin/pages/AddNewPage";
-import AllPackages from "./components/admin/pages/AllPackages";
-import AddNewPackage from "./components/admin/pages/AddNewPackage";
 import MapSettings from "./components/admin/pages/MapSettings";
 import Users from "./components/admin/pages/Users";
 import AddAdvertisment from "./components/admin/pages/AddAdvertisment";
@@ -99,7 +97,6 @@ function App() {
             <Route exact path='/admin/page' element={<PageSidebarAdmin />} />
             <Route exact path='/admin/post' element={<BlogPost />} />
             <Route exact path='/admin/amenities' element={<Amenities />} />
-            <Route exact path='/admin/allpackages' element={<AllPackages />} />
             <Route exact path='/admin/editcollege/:id' element={<EditCollege />} />
             <Route exact path='/admin/editstream/:id' element={<EditNewStream />} />
             <Route exact path='/admin/editamenity/:id' element={<EditNewAmenity />} />
@@ -109,7 +106,6 @@ function App() {
             <Route exact path='/admin/users' element={<Users />} />
             <Route exact path='/admin/mapsettings' element={<MapSettings />} />
             <Route exact path='/admin/addnewamenity' element={<AddNewAmenities />} />
-            <Route exact path='/admin/addnewpackage' element={<AddNewPackage />} />
             <Route exact path='/admin/frontendsettings' element={<FrontendSetting />} />
             <Route exact path='/admin/languagesettings' element={<LanguageSettings />} />
             <Route exact path='/admin/systemsettings' element={<SystemSettings />} />
@@ -123,8 +119,6 @@ function App() {
           </Route>
         </Routes>
       </BrowserRouter>
-
-
     </>
   );
 }
