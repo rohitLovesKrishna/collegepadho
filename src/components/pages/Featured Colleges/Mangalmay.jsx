@@ -173,7 +173,7 @@ const IndividualCollegeInfo = () => {
               </Box>
             </Grid>
 
-            <Grid container xs={12} spacing={2} p="10px">
+            <Grid container spacing={2} p="10px">
               <Grid item xs={12} lg={8} md={8} mt="20px" >
                 <Grid item mb={"20px"} sx={{ height: "fit-content" }}>
                   <Box mb="10px" ml="10px"  >

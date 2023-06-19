@@ -41,7 +41,7 @@ const CourseDetailInner1 = ({ data, handleOpen }) => {
 
           {data.specialisation.trim().length > 0 && data.specialisation != "N/A" ? <Grid item container >
             {data.specialisation.split(',').map((item) => {
-              console.log(item)
+
               return (<Grid key={item} item lg={6} md={6} sm={6} xs={12}>
                 <Button disableRipple sx={{ textDecoration: "unset" }} startIcon={<CheckBoxIcon />}>{item}</Button>
               </Grid>)
