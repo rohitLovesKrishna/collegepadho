@@ -53,6 +53,7 @@ import EditNewBlog from "./components/admin/pages/EditBlog/EditNewBlog";
 import EditNewLocation from "./components/admin/pages/EditLocation/EditNewLocation";
 import EditNewUser from "./components/admin/pages/EditUser/EditNewUser";
 import SearchColleges from "./components/pages/CollegeSearch";
+
 function App() {
   return (
     <>
