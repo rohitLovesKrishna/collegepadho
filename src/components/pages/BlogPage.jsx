@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Box, Grid, Typography, Button, AppBar, Toolbar } from '@mui/material';
+import { Box, Grid, Typography, Button } from '@mui/material';
 // import blogapi from './BlogAPi';
 import PersonIcon from '@mui/icons-material/Person';
 import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
@@ -42,6 +42,7 @@ const BlogPage = () => {
     getApi();
   }, [])
   if (blogApi.length > 0) {
+
     return (
       <>
         <ModalPage open={open} setOpen={setOpen} />
@@ -50,7 +51,7 @@ const BlogPage = () => {
         <Grid container sx={{ backgroundColor: '#f8f8f8', mb: "20px" }} >
           <Grid item xs={12} sx={{ mt: "100px", display: 'flex', justifyContent: 'center', alignItems: 'center', backgroundColor: 'white' }}>
             <Box sx={{ width: '53.4%', mt: '5px' }}>
-              <img src={college} style={{ cursor: 'pointer', width: '100%', height: '100%' }} />
+              <img src={college} alt='pic' style={{ cursor: 'pointer', width: '100%', height: '100%' }} />
             </Box>
           </Grid>
           <Grid container xs={12} sm={12} md={8.5} lg={8.5} sx={{ display: 'flex', justifyContent: "center", alignItems: 'flex-start', mt: '30px' }}>
@@ -61,7 +62,7 @@ const BlogPage = () => {
                   <>
                     <Grid key={ele._id} mr={"30px"} onClick={() => navigate(`/home/posts/${ele._id}`)} item xs={10} sm={4.5} md={4.5} lg={4.5} sx={{ height: "440px", mb: "20px", backgroundColor: 'white', boxShadow: '0px 2px 9px 0px rgba(0,0,0,0.75)', borderRadius: '7px', display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
                       <Box id='clgimg'>
-                        <img src={`${BASE_URL}` + ele.image} width='100%' height='200px' style={{ boxSizing: 'border-box', borderRadius: '7px' }} />
+                        <img src={`${BASE_URL}` + ele.image} alt='pic' width='100%' height='200px' style={{ boxSizing: 'border-box', borderRadius: '7px' }} />
 
                       </Box>
 
@@ -102,7 +103,7 @@ const BlogPage = () => {
           <Grid item container id='rightGrid' xs={12} sm={12} md={3.5} lg={3.5} sx={{ mt: '30px', }}>
             <Grid item xs={10} sm={10} md={10} lg={10} sx={{ mt: '15px' }}>
               <Typography variant='body' fontWeight={600} sx={{ color: '#757575' }}>Title, Description, Category</Typography>
-              <Box onClick={boxHandler} sx={{ bgcolor: 'white', padding: '1px', mt: '10px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', border: '0.3px solid #e0e0e0', borderRadius: '6px', boxShadow: box == true ? "0px 0px 4px 0px rgba(23,75,232,1)" : "" }}>
+              <Box onClick={boxHandler} sx={{ bgcolor: 'white', padding: '1px', mt: '10px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', border: '0.3px solid #e0e0e0', borderRadius: '6px', boxShadow: box === true ? "0px 0px 4px 0px rgba(23,75,232,1)" : "" }}>
                 <InputBase placeholder='Search...' />
                 <Button variant='contained' color='primary' size='small' sx={{ margin: '4px 2px 4px 0px' }}>Search</Button>
               </Box>
@@ -114,7 +115,7 @@ const BlogPage = () => {
                 return (
                   <Box sx={{ display: 'flex', alignItems: 'center', mt: '15px', }}>
                     <Box id='rightFirstImg' sx={{ width: '125px', height: '100px', mr: '10px' }}>
-                      <img width="100px" height="100px" src={`${BASE_URL}` + item.image} />
+                      <img width="100px" alt='pic' height="100px" src={`${BASE_URL}` + item.image} />
                     </Box>
                     <Box>
                       <Box sx={{ display: "flex", color: 'gray', alignItems: "center", justifyContent: "left" }}>
@@ -136,7 +137,7 @@ const BlogPage = () => {
               {streamsData.map((item, index) => {
                 return (<Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mt: '4px', color: '#757575' }}>
                   <Typography variant='body' fontWeight={600}>{item.parentStream}</Typography>
-                  <Typography variant='body' fontWeight={600}>{`(1)`}</Typography>
+                  <Typography variant='body' fontWeight={600}>{(Math.floor(Math.random() * 100))}</Typography>
                 </Box>)
 
               })}
