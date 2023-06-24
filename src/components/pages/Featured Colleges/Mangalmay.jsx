@@ -140,9 +140,10 @@ const IndividualCollegeInfo = () => {
                 {data.collegeGallery.length > 1 ? <Typography sx={{ opacity: tabBars.gallery ? 1 : '0.6', fontSize: "18px" }} onClick={() => { const element = document.getElementById('gallerySection'); element.scrollIntoView({ behavior: 'smooth', block: 'center' }); const newFi = { ...navBars }; newFi.gallery = true; setTabBars(newFi) }} mr="17px" fontSize="1.1rem">
                   Gallery
                 </Typography> : ""}
-                {data.collegeVideoURL.youTubeUrl.trim().length > 0 ? <Typography sx={{ opacity: tabBars.video ? 1 : '0.6', fontSize: "18px" }} onClick={() => { const element = document.getElementById('videoSection'); element.scrollIntoView({ behavior: 'smooth', block: 'center' }); const newFi = { ...navBars }; newFi.video = true; setTabBars(newFi) }} mr="17px" fontSize="1.1rem">
+                {data.collegeVideoURL == null || data.collegeVideoURL == undefined ? "" : <Typography sx={{ opacity: tabBars.video ? 1 : '0.6', fontSize: "18px" }} onClick={() => { const element = document.getElementById('videoSection'); element.scrollIntoView({ behavior: 'smooth', block: 'center' }); const newFi = { ...navBars }; newFi.video = true; setTabBars(newFi) }} mr="17px" fontSize="1.1rem">
                   Video
-                </Typography> : ""}
+                </Typography>}
+
                 {data.collegeContact !== null ? <Typography sx={{ opacity: tabBars.contact ? 1 : '0.6', fontSize: "18px" }} onClick={() => { const element = document.getElementById('contactSection'); element.scrollIntoView({ behavior: 'smooth', block: 'center' }); const newFi = { ...navBars }; newFi.contact = true; setTabBars(newFi) }} mr="17px" fontSize="1.1rem">
                   Contact
                 </Typography> : ""}
@@ -269,9 +270,12 @@ const IndividualCollegeInfo = () => {
                 <Grid id="gallerySection" item mb="20px" >
                   <PhotoGallery data={data.collegeGallery} />
                 </Grid>
-                {data.collegeVideoURL.youTubeUrl.trim().length > 0 ? <Grid item mb="20px" id="videoSection" sx={{ height: "fit-content" }}>
-                  <iframe title="youtube" width="100%" height="345" src={`https://www.youtube.com/embed/${data.collegeVideoURL.youTubeUrl.split('=')[1]}`}></iframe>
-                </Grid> : ""}
+                {data.collegeVideoURL == null || data.collegeVideoURL == undefined ? "" :
+                  <Grid item mb="20px" id="videoSection" sx={{ height: "fit-content" }}>
+                    <iframe title="youtube" width="100%" height="345" src={`https://www.youtube.com/embed/${data.collegeVideoURL.youTubeUrl.split('=')[1]}`}></iframe>
+                  </Grid>
+                }
+
                 <Grid id="contactSection" mb={"20px"}>
                   <Contact data={data.collegeContact} />
                 </Grid>
