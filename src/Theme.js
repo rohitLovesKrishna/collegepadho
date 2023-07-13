@@ -16,14 +16,14 @@ const Theme = createTheme({
   },
   typography: {
     fontFamily: [
-        '-apple-system',
-        'Montserrat'
+      '-apple-system',
+      'Montserrat'
     ].join(','),
   },
 });
 export default Theme;
 
-export  function Palette() {
+export function Palette() {
   return (
     <ThemeProvider theme={Theme}>
       <Button>Primary</Button>
